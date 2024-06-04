@@ -1,0 +1,26 @@
+body {
+    font-family: 'Quantico', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.about-box {
+    background-color: #D9D9D9;
+    border-radius: 35px;
+    padding: 20px;
+    max-width: 1200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.about-box h1, .about-box h2 {
+    text-align: left;
+}
+.about-box p {
+    text-align: justify;
+}
+.about-box ul {
+    list-style-type: none;
+    padding-left: 0;
+}
