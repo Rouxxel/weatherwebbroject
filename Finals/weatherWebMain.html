@@ -4,222 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forkast</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #1f1b42;
-            color: white;
-        }
-        header {
-            background-color: #2b2577;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        nav {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        .search-section {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .search-box {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            color: white;
-            width: 50%;
-        }
-        .search-box::placeholder {
-            color: #ccc;
-        }
-        .location-section, .suggestions-section, .hourly-weather-section, .weekly-weather-section, .news-section {
-            margin: 20px;
-            text-align: center;
-        }
-        .suggestions-grid, .hourly-grid, .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .hourly-card, .news-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .week-weather-details {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-        }
-        .week-weather-details div {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        footer {
-            background-color: #2b2577;
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-        .social-links img {
-            width: 30px;
-            margin: 0 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="mainCSS.css">
 </head>
 <body>
-    <header>
-        <h1>Forkast</h1>
+
+    <div class="header">
+        <img src="logo.png" alt="ForKast Logo">
         <nav>
+            <a href="#">Home</a>
             <a href="#">About</a>
             <a href="#">News</a>
             <a href="#">Contact</a>
             <a href="#">Sign In/Register</a>
         </nav>
-    </header>
-   
-    <div class="search-section">
-        <input class="search-box" type="text" placeholder="Search your Address, City or Zip Code">
     </div>
-   
-    <div class="location-section">
-        <div class="card">
-            <h2>Mitte, Germany</h2>
-            <p>19°C</p>
+    
+    <div class="image-container">
+        <img src="backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
+        <div class="box box1">
+            <input type="text" class="search-box" placeholder="Search your Address, City or Zip Code">
+        </div>
+        <div class="suggestions-container">
+            <div class="suggestion-box">Suggestion 1</div>
+            <div class="suggestion-box">Suggestion 2</div>
+            <div class="suggestion-box">Suggestion 3</div>
+            <div class="suggestion-box">Suggestion 4</div>
         </div>
     </div>
- 
-    <div class="suggestions-section">
-        <div class="suggestions-grid">
-            <div class="card">
-                <h3>Potsdam, Germany</h3>
-                <p>18°C</p>
-            </div>
-            <div class="card">
-                <h3>Golm, Germany</h3>
-                <p>19°C</p>
-            </div>
-            <div class="card">
-                <h3>Frankfurt, Germany</h3>
-                <p>22°C</p>
-            </div>
-            <div class="card">
-                <h3>Stuttgart, Germany</h3>
-                <p>15°C</p>
-            </div>
-            <div class="card">
-                <h3>Leipzig, Germany</h3>
-                <p>10°C</p>
-            </div>
-            <div class="card">
-                <h3>Hamburg, Germany</h3>
-                <p>22°C</p>
-            </div>
-            <div class="card">
-                <h3>Cologne, Germany</h3>
-                <p>21°C</p>
-            </div>
-            <div class="card">
-                <h3>Munich, Germany</h3>
-                <p>23°C</p>
-            </div>
-        </div>
-    </div>
-   
-    <div class="hourly-weather-section">
-        <h2>Hourly weather</h2>
-        <div class="hourly-grid">
-            <div class="hourly-card">
-                <p>14:00 - 18°C</p>
-                <p>Cloudy</p>
-            </div>
-            <!-- Repeat for each hourly forecast -->
-            <div class="hourly-card">
-                <p>15:00 - 15°C</p>
-                <p>Cloudy</p>
-            </div>
-            <div class="hourly-card">
-                <p>16:00 - 15°C</p>
-                <p>Cloudy</p>
-            </div>
-            <div class="hourly-card">
-                <p>17:00 - 16°C</p>
-                <p>Cloudy</p>
-            </div>
-            <div class="hourly-card">
-                <p>18:00 - 16°C</p>
-                <p>Cloudy</p>
-            </div>
-            <div class="hourly-card">
-                <p>19:00 - 17°C</p>
-                <p>Cloudy</p>
-            </div>
-            <div class="hourly-card">
-                <p>20:00 - 17°C</p>
-                <p>Cloudy</p>
-            </div>
-        </div>
-    </div>
- 
-    <div class="weekly-weather-section">
-        <h2>Week's weather</h2>
-        <div class="week-weather-details">
-            <div>
-                <p>Sunrise: 06:38 am</p>
-                <p>Sunset: 18:45 pm</p>
-            </div>
-            <div>
-                <p>UV Index: 5</p>
-            </div>
-            <div>
-                <p>Wind Speed: 18 km/h</p>
-            </div>
-            <div>
-                <p>Humidity: 75%</p>
-            </div>
-            <div>
-                <p>Pressure: 28.56 mb</p>
-            </div>
-            <div>
-                <p>Chance of Rain: 67%</p>
-            </div>
-        </div>
-        <div class="card">
-            <h2>Potsdam, Germany</h2>
-            <p>17°C, Rain</p>
-        </div>
-    </div>
- 
-    <div class="news-section">
-        <h2>Big weather news</h2>
-        <div class="news-grid">
-            <div class="news-card">
-                <p>84 mph wind rakes New Orleans as storms sweep Gulf Coast</p>
-            </div>
-            <div class="news-card">
-                <p>84 mph wind rakes New Orleans as storms sweep Gulf Coast</p>
-            </div>
-            <!-- Repeat for each news item -->
-        </div>
-    </div>
-   
+
     <footer>
         <div class="social-links">
             <a href="#"><img src="instagram.png" alt="Instagram"></a>
