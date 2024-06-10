@@ -54,13 +54,14 @@ body {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     max-width: 80%;
-    height: 300;
-    margin-bottom: 20px; /* Space between box1 and suggestions-container */
+    height: 35px;
+    margin-bottom: 10px; /* Space between box1 and suggestions-container */
 }
 
 .box1 .search-box {
-    width: 780px;
-    padding: 10px;
+    width: 960px;
+    height: 35px;
+    padding: 0px;
     border-radius: 5px;
     border: 1px solid #00082B;
     background-color: rgba(255, 255, 255, 0.9);
@@ -75,7 +76,6 @@ body {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     max-width: 80%;
-    height: 300;
 }
 
 .suggestion-box {
@@ -83,13 +83,112 @@ body {
     color: white;
     border-radius: 10px;
     padding: 15px;
-    margin: 10px;
-    width: 150px;
+    margin: 20px; /* Adjusted margin to maintain spacing */
+    width: 50px;
+    height: 100px;
     text-align: center;
+    flex-basis: calc(25% - 100px); /* Adjust this value as per the design */
 }
 
 .suggestion-box p {
     margin: 5px 0;
+}
+
+.content-container {
+    width: 90%;
+    margin: auto;
+    padding-top: 20px;
+    margin-top: 300px; /* Adjust this value to change how far down the content is */
+}
+
+.header-box {
+    background-color: #151C42;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    border: 2px solid #004080;
+}
+
+.view-switch {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.view-switch button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.view-switch button.active {
+    background-color: #FFF;
+    color: #000;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background-color: #BBB;
+    border-radius: 20px;
+    width: 80px;
+    height: 40px;
+}
+
+.graph-container {
+    position: relative;
+    background-color: #151C42;
+    border: 2px solid #004080;
+    border-radius: 20px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.graph {
+    width: 90%;
+    height: 100%;
+    border: 1px dashed #004080;
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: #004080;
+    border: 2px solid #004080;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.nav-arrow.left {
+    left: 10px;
+}
+
+.nav-arrow.right {
+    right: 10px;
 }
 
 footer {
