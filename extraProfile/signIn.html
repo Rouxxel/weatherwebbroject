@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #0d0d5a;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .container {
+            text-align: center;
+        }
+        .profile-pic {
+            background-color: #cccccc;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+        }
+        .form-control {
+            display: block;
+            width: 300px;
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        .btn-cancel {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .btn-login {
+            background-color: #80ff80;
+            color: white;
+        }
+        .btn-register {
+            margin-top: 10px;
+            background-color: #cccccc;
+            color: white;
+        }
+        nav {
+            background-color: #1a1a85;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .toggle-btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Logo</a>
+        <div>
+            <a href="#">About</a>
+            <a href="#">New</a>
+            <a href="#">Contact</a>
+            <a href="#">Sign In/Register</a>
+        </div>
+        <div class="toggle-btn">Toggle</div>
+    </nav>
+    <div class="container">
+        <div class="profile-pic"></div>
+        <input type="email" class="form-control" placeholder="Email">
+        <input type="password" class="form-control" placeholder="Password">
+        <button class="btn btn-cancel">Cancel</button>
+        <button class="btn btn-login">Login</button>
+        <button class="btn btn-register">Register</button>
+    </div>
+</body>
+</html>
