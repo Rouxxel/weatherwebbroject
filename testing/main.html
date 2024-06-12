@@ -10,12 +10,12 @@
 <body>
 
 
-    <!-- This the top naviagtion bar of the web page -->
+    <!-----------------------------------------This the top naviagtion bar of the web page----------------------------------------------------->
 
 
     <div class="header">
         <div class="logo-container">
-            <img src="forkastLogo.png" alt="ForKast">
+            <img src="images/forkastLogo.png" alt="ForKast">
             <span class="site-title">ForKast</span>
         </div>
         <nav>
@@ -29,17 +29,17 @@
     
     
 
-<!-- This is the background image and search bar -->
+<!-----------------------------------------------This is the background image and search bar--------------------------------------------------->
 
 
     <div class="image-container">
-        <img src="backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
+        <img src="images/backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
         <div class="box box1">
             <input type="text" class="search-box" placeholder="Search City or Zip Code">
         </div>
 
 
-<!-- This is the suggestion boxes of weather locations -->
+<!------------------------------------------This is the suggestion boxes of weather locations-------------------------------------------------->
 
 
         <div class="suggestions-container">
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <!-- This is the grapgh of the weather -->
+    <!--------------------------------------------This is the graph of the weather------------------------------------------------------------>
 
     <div class="header-transparent-container">
         <div class="header-box">
@@ -85,21 +85,62 @@
         </div>
     </div>
     
+    <!-------------------------------------This is today's weather detailed-------------------------------------------------------------------->
+    <div class="weather-container">
+        <div class="header-name-weather">
+            Todays weather
+        </div>
+        <div class="grid-container">
+            <div class="details-container" id="details-container">
+                <div class="weather-item">Sunrise<br><span>06:32 am</span></div>
+                <div class="weather-item">Sunset<br><span>16:45 pm</span></div>
+                <div class="weather-item">Wind Speed<br><span>16 km/h</span></div>
+                <div class="weather-item">UV Index<br><span>5</span></div>
+                <div class="weather-item">Chance of Rain<br><span>67 %</span></div>
+                <div class="weather-item">Pressure<br><span>29.56 mb</span></div>
+                <div class="weather-item">Humidity<br><span>75 %</span></div>
+                <div class="main-weather" id="main-weather">
+                    <div class="location">Potsdam<br>Germany</div>
+                    <img src="images/rainicon.png" alt="Rain">
+                    <div class="temp">17°C</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------------------This is all the HTML of the Big weather news-------------------------------------------------------->
+
+    <div class="transparent-header-news">
+        <div class="header-name-news">
+            Big Weather news!
+        </div>
+    </div>
+    
+    <div class="news-container">
+        <div class="news-box"></div>
+        <div class="news-box"></div>
+        <div class="news-box"></div>
+        <div class="news-box"></div>
+        <div class="news-box"></div>
+        <div class="news-box"></div>
+    </div>
+    
     
 
-
-
-    <!-- This is all the HTML to do wit the footer of the web pages -->
+    <!-------------------------------------This is all the HTML to do wit the footer of the web pages------------------------------------------>
 
 
 
-    <footer>
-        <div class="social-links">
-            <a href="#"><img src="instagram.png" alt="Instagram"></a>
-            <a href="#"><img src="whatsapp.png" alt="WhatsApp"></a>
-            <a href="#"><img src="email.png" alt="Email"></a>
+    <div class="footer">
+        <div class="social-media">
+            <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+            <a href="#"><img src="images/iconEmail.png" alt="Email"></a>
         </div>
-        <p>&copy; 2024 Forkast. All rights reserved.</p>
-    </footer>
+        <p>World | Europe | Americas | Asia | Africa | Australia | Antarctica</p>
+        <p>2024 ForKast, Inc. All rights reserved.</p>
+        <p>Terms of Use | Privacy Policy | Cookie Policy</p>
+    </div>
+
 </body>
 </html>

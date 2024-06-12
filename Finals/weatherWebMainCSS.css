@@ -5,7 +5,7 @@ body {
     color: white;
 }
 
-/* This is the CSS to do with navagation bar */
+/*-------------------------------------------This is the CSS to do with navagation bar--------------------------------------------------------*/
 
 .header {
     background-color: #00082B;
@@ -42,7 +42,7 @@ body {
 }
 
 
-/* This is the container around the search bar */
+/*------------------------------------------This is the container around the search bar-------------------------------------------------------*/
 
 .image-container {
     position: relative;
@@ -75,7 +75,7 @@ body {
     margin-bottom: 10px; /* Space between box1 and suggestions-container */
 }
 
-/* This is the CSS for the search bar */
+/*----------------------------------------------This is the CSS for the search bar------------------------------------------------------------*/
 
 .box1 .search-box {
     width: 960px;
@@ -88,7 +88,7 @@ body {
 }
 
 
-/* This is the CSS for the suggestion boxes */
+/*-------------------------------------------This is the CSS for the suggestion boxes---------------------------------------------------------*/
 
 .suggestions-container {
     display: flex;
@@ -116,7 +116,7 @@ body {
     margin: 5px 0;
 }
 
-/* This is all the CSS for the graph */
+/*---------------------------------------------This is all the CSS for the graph--------------------------------------------------------------*/
 
 .header-transparent-container {
     background-color: rgba(0, 0, 0, 0.5); /* Lightly transparent black background */
@@ -124,7 +124,7 @@ body {
     border-radius: 20px;
     width: 90%;
     margin: auto;
-    margin-top: 400px; /* Adjust this value to change the spacing above the header */
+    margin-top: 600px; /* Adjust this value to change the spacing above the header */
     display: flex;
     justify-content: center; /* Center the content horizontally */
     align-items: center; /* Center the content vertically */
@@ -235,18 +235,165 @@ body {
     right: 10px;
 }
 
+/*--------------------------------------------------This is all the CSS for the daily weather----------------------------------------------*/
+
+.weather-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    width: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
-/* This is all the CSS to do with footer */
+.header-name-weather {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+}
 
-footer {
-    background-color: #2b2577;
+/* Grid container for weather details */
+.grid-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Container for weather details */
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    justify-items: center;
+}
+
+/* Individual weather item */
+.weather-item {
+    background-color: #4d4de2;
+    border-radius: 10px;
+    padding: 40px;
+    font-size: 16px;
+    text-align: center;
+    width: 200px;
+    height: 20px;
+}
+
+/* Span within weather item */
+.weather-item span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Main weather section */
+.main-weather {
+    background-color: #D0D0E0;
+    color: black;
+    border-radius: 5px;
     padding: 20px;
     text-align: center;
-    color: white;
+    grid-column: span 2; /* Make it span across two columns */
+    width: 100%;
 }
 
-.social-links img {
-    width: 30px;
-    margin: 0 10px;
+/* Location text within main weather section */
+.main-weather .location {
+    font-size: 20px;
+    font-weight: bold;
 }
+
+/* Temperature text within main weather section */
+.main-weather .temp {
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Image within main weather section */
+.main-weather img {
+    width: 50px;
+    margin: 10px 0;
+}
+
+
+
+/*--------------------------------------------------This is all the CSS for the big weather news----------------------------------------------*/
+
+.transparent-header-news {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%;
+    margin: auto;
+    margin-top: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header-name-news {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    gap: 20px; /* Adjust spacing between news-boxes */
+    margin: 20px auto;
+    width: 90%;
+}
+
+.news-box {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    height: 200px; /* Adjust height as needed */
+}
+
+
+
+
+/*--------------------------------------------------This is all the CSS to do with footer-----------------------------------------------------*/
+
+.footer {
+    background-color: #F0F0F0;
+    padding: 20px;
+    color: black;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+.footer a {
+    color: black;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.footer img {
+    height: 30px;
+
+}
+
