@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForKast</title>
     <link rel="stylesheet" type="text/css" href="mainCSS.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
 
+    <script src="mainJS.js"></script>
 
     <!-----------------------------------------This the top naviagtion bar of the web page----------------------------------------------------->
 
@@ -23,10 +24,8 @@
             <a href="#">About</a>
             <a href="#">News</a>
             <a href="#">Contact</a>
-            <a href="#">Sign In/Register</a>
         </nav>
     </div>
-    
     
 
 <!-----------------------------------------------This is the background image and search bar--------------------------------------------------->
@@ -36,8 +35,12 @@
         <img src="images/backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
         <div class="box box1">
             <input type="text" class="search-box" placeholder="Search City or Zip Code">
+            <button onclick="locator()">Click Me</button>
         </div>
 
+       
+        <button onclick="fetchWeather()">Get Weather</button>
+    <div id="weather-info"></div>
 
 <!------------------------------------------This is the suggestion boxes of weather locations-------------------------------------------------->
 
@@ -86,9 +89,12 @@
     </div>
     
     <!-------------------------------------This is today's weather detailed-------------------------------------------------------------------->
+    <div class="transparent-header-weather">
+        <div class="header-name-header">
+            Big Weather news!
+        </div>
+
     <div class="weather-container">
-        <div class="header-name-weather">
-            Todays weather
         </div>
         <div class="grid-container">
             <div class="details-container" id="details-container">
