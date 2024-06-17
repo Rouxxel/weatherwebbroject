@@ -11,12 +11,14 @@
 
     <script src="mainJS.js"></script>
 
+    <script>defaultWeather()</script>
+
     <!-----------------------------------------This the top naviagtion bar of the web page----------------------------------------------------->
 
 
     <div class="header">
         <div class="logo-container">
-            <img src="images/forkastLogo.png" alt="ForKast">
+            <img src="images/ForKastLogo.png" alt="ForKast">
             <span class="site-title">ForKast</span>
         </div>
         <nav>
@@ -34,13 +36,13 @@
     <div class="image-container">
         <img src="images/backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
         <div class="box box1">
-            <input type="text" class="search-box" placeholder="Search City or Zip Code">
-            <button onclick="locator()">Click Me</button>
+            <input type="text" class="search-box" id="city-input" placeholder="Search City">
+            <button onclick="searchCity()">Search</button>
         </div>
 
-       
-        <button onclick="fetchWeather()">Get Weather</button>
-    <div id="weather-info"></div>
+       <button onclick="locator()">Get current location</button>
+        
+ 
 
 <!------------------------------------------This is the suggestion boxes of weather locations-------------------------------------------------->
 
@@ -98,7 +100,7 @@
         </div>
         <div class="grid-container">
             <div class="details-container" id="details-container">
-                <div class="weather-item">Sunrise<br><span>06:32 am</span></div>
+                <div class="weather-item">Sunrise<br><span>weatherData.sunrise</span></div>
                 <div class="weather-item">Sunset<br><span>16:45 pm</span></div>
                 <div class="weather-item">Wind Speed<br><span>16 km/h</span></div>
                 <div class="weather-item">UV Index<br><span>5</span></div>
@@ -147,6 +149,21 @@
         <p>2024 ForKast, Inc. All rights reserved.</p>
         <p>Terms of Use | Privacy Policy | Cookie Policy</p>
     </div>
+
+    <!--------------------------------------This is the weather info default------------------------------------------------------------------------------>
+    <h1>Weather Information</h1>
+    <div id="temp"></div> 
+    <div id="temp_max"></div> 
+    <div id="temp_min"></div>  
+    <div id="humidity"></div>  
+    <div id="wind_speed"></div>  
+    <div id="sunrise"></div>  
+    <div id="sunset"></div>
+    <div id="weather_main"></div>
+    <div id="weather_description"></div>
+    <div id="feels_like"></div>
+   
+ <!--------------------------------------This is the weather info searched-------------------------------------------------------------------------->
 
 </body>
 </html>
