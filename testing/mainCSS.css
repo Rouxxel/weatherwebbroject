@@ -232,110 +232,73 @@ body {
 
 /*--------------------------------------------------This is all the CSS for the daily weather----------------------------------------------*/
 
-.header-name-weather1 {
-    position: relative;
-    width: fit-content; /* Adjust width to fit content */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 1.5em;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Optional: add text shadow for better readability */
-}
-
-.weather-container {
+.transparent-header-weather {
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
     padding: 20px;
-    width: 800px;
+    border-radius: 20px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 300px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    position: relative;
-    margin-top: 300px;
-    margin-left: auto;
-    margin-right: auto;
 }
-
-
-.header-name-weather {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+ 
+.header-name-header {
     color: white;
     font-size: 1.5em;
+    margin-bottom: 20px;
 }
-
-/* Grid container for weather details */
-.grid-container {
+ 
+.weather-container {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
 }
-
-/* Container for weather details */
+ 
+.main-weather {
+    text-align: center;
+    margin-bottom: 20px;
+}
+ 
+.weather-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+ 
+.location {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: black;
+}
+ 
+.temp {
+    font-size: 2em;
+    margin-top: 10px;
+    color: black;
+}
+ 
 .details-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    justify-items: center;
-}
-
-/* Individual weather item */
-.weather-item {
-    background-color: #4d4de2;
-    border-radius: 10px;
-    padding: 40px;
-    font-size: 16px;
-    text-align: center;
-    width: 200px;
-    height: 20px;
-}
-
-/* Span within weather item */
-.weather-item span {
-    display: block;
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-/* Main weather section */
-.main-weather {
-    background-color: #D0D0E0;
-    color: black;
-    border-radius: 5px;
-    padding: 20px;
-    text-align: center;
-    grid-column: span 2; /* Make it span across two columns */
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    gap: 20px;
     width: 100%;
+    max-width: 600px; /* Adjust the max width to control the grid size */
 }
-
-/* Location text within main weather section */
-.main-weather .location {
-    font-size: 20px;
-    font-weight: bold;
+ 
+.weather-item {
+    background: #4d4de4;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
 }
-
-/* Temperature text within main weather section */
-.main-weather .temp {
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* Image within main weather section */
-.main-weather img {
-    width: 50px;
-    margin: 10px 0;
-}
-
-
 
 /*--------------------------------------------------This is all the CSS for the big weather news----------------------------------------------*/
 

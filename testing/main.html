@@ -41,6 +41,8 @@
         </div>
 
        <button onclick="locator()">Get current location</button>
+
+       <button onclick="test()">forkast</button>
         
  
 
@@ -93,25 +95,24 @@
     <!-------------------------------------This is today's weather detailed-------------------------------------------------------------------->
     <div class="transparent-header-weather">
         <div class="header-name-header">
-            Big Weather news!
+            Today's Weather
         </div>
-
-    <div class="weather-container">
-        </div>
-        <div class="grid-container">
+        <div class="weather-container">
+            <div class="main-weather" id="main-weather">
+                <div class="weather-box">
+                    <div class="location">Potsdam<br>Germany</div>
+                    <img src="images/rainicon.png" alt="Rain">
+                    <div class="temp">17°C</div>
+                </div>
+            </div>
             <div class="details-container" id="details-container">
-                <div class="weather-item">Sunrise<br><span>weatherData.sunrise</span></div>
+                <div class="weather-item">Sunrise<br><span>06:32 am</span></div>
                 <div class="weather-item">Sunset<br><span>16:45 pm</span></div>
                 <div class="weather-item">Wind Speed<br><span>16 km/h</span></div>
                 <div class="weather-item">UV Index<br><span>5</span></div>
                 <div class="weather-item">Chance of Rain<br><span>67 %</span></div>
                 <div class="weather-item">Pressure<br><span>29.56 mb</span></div>
                 <div class="weather-item">Humidity<br><span>75 %</span></div>
-                <div class="main-weather" id="main-weather">
-                    <div class="location">Potsdam<br>Germany</div>
-                    <img src="images/rainicon.png" alt="Rain">
-                    <div class="temp">17°C</div>
-                </div>
             </div>
         </div>
     </div>
@@ -150,7 +151,7 @@
         <p>Terms of Use | Privacy Policy | Cookie Policy</p>
     </div>
 
-    <!--------------------------------------This is the weather info default------------------------------------------------------------------------------>
+    <!--------------------------------------This is the weather info todays------------------------------------------------------------------------------>
     <h1>Weather Information</h1>
     <div id="temp"></div> 
     <div id="temp_max"></div> 
@@ -163,7 +164,10 @@
     <div id="weather_description"></div>
     <div id="feels_like"></div>
    
- <!--------------------------------------This is the weather info searched-------------------------------------------------------------------------->
+ <!--------------------------------------This is the weather info forkast-------------------------------------------------------------------------->
+ <h1>Weather Forecast</h1>
+ <div id="forecast-container"></div>
+
 
 </body>
 </html>

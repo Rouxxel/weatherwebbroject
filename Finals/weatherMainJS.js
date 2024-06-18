@@ -106,6 +106,16 @@ function updateWeatherDisplay() {
   document.getElementById("feels_like").textContent = `Feels Like: ${feels_like}°C`;
 
 }
+function test(){
+  const apiKey = '96f97ce98eae5f28d54c627c89497f55';
+  var city = 'Berlin'
+  const url = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&units=metric&cnt=7&appid=${apiKey}`;
+
+fetch(url)
+ .then(response => response.json())
+ .then(data => console.log(data))
+ .catch(error => console.error(error));
+}
 
 
 
