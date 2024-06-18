@@ -119,7 +119,7 @@ body {
     border-radius: 20px;
     width: 90%;
     margin: auto;
-    margin-top: 600px; /* Adjust this value to change the spacing above the header */
+    margin-top: 900px; /* Adjust this value to change the spacing above the header */
     display: flex;
     justify-content: center; /* Center the content horizontally */
     align-items: center; /* Center the content vertically */

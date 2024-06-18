@@ -116,35 +116,36 @@ function test() {
         dailyData[day].descriptions.push(item.weather[0].description);
       });
 
-      const aggregatedData = Object.keys(dailyData).map(day => ({
-        day: day,
-        temp: (dailyData[day].temps.reduce((a, b) => a + b, 0) / dailyData[day].temps.length).toFixed(2),
-        main: dailyData[day].mains.sort((a, b) => dailyData[day].mains.filter(v => v === a).length - dailyData[day].mains.filter(v => v === b).length).pop(),
-        description: dailyData[day].descriptions.sort((a, b) => dailyData[day].descriptions.filter(v => v === a).length - dailyData[day].descriptions.filter(v => v === b).length).pop()
-      })).slice(0, 7);
+      const aggregatedData = Object.keys(dailyData).map((day, index) => {
+        const temp = (dailyData[day].temps.reduce((a, b) => a + b, 0) / dailyData[day].temps.length).toFixed(2);
+        const main = dailyData[day].mains.sort((a, b) => dailyData[day].mains.filter(v => v === a).length - dailyData[day].mains.filter(v => v === b).length).pop();
+        const description = dailyData[day].descriptions.sort((a, b) => dailyData[day].descriptions.filter(v => v === a).length - dailyData[day].descriptions.filter(v => v === b).length).pop();
+
+        return { day, temp, main, description };
+      }).slice(0, 7);
 
       const forecastContainer = document.getElementById("forecast-container");
       forecastContainer.innerHTML = ""; // clear the container
 
-      aggregatedData.forEach((day, index) => {
+      aggregatedData.forEach((dayData, index) => {
         const dayDiv = document.createElement("div");
         dayDiv.className = "day";
-        dayDiv.innerHTML = `Day: ${day.day}`;
+        dayDiv.innerHTML = `Day: ${dayData.day}`;
         forecastContainer.appendChild(dayDiv);
 
         const tempDiv = document.createElement("div");
         tempDiv.className = "temp";
-        tempDiv.innerHTML = `Temperature: ${day.temp}°C`;
+        tempDiv.innerHTML = `Temperature: ${dayData.temp}°C`;
         forecastContainer.appendChild(tempDiv);
 
         const weatherMainDiv = document.createElement("div");
         weatherMainDiv.className = "weather-main";
-        weatherMainDiv.innerHTML = `Weather: ${day.main}`;
+        weatherMainDiv.innerHTML = `Weather: ${dayData.main}`;
         forecastContainer.appendChild(weatherMainDiv);
 
         const weatherDescriptionDiv = document.createElement("div");
         weatherDescriptionDiv.className = "weather-description";
-        weatherDescriptionDiv.innerHTML = `Description: ${day.description}`;
+        weatherDescriptionDiv.innerHTML = `Description: ${dayData.description}`;
         forecastContainer.appendChild(weatherDescriptionDiv);
       });
     })
