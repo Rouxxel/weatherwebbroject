@@ -137,29 +137,6 @@ body {
     font-size: 1.5em;
 }
 
-.view-switch {
-    position: relative; /* Use relative positioning to control its position */
-    display: flex;
-    gap: 10px;
-    margin-top: 10px; /* Add some space between the text and the buttons */
-}
-
-.view-switch button {
-    background-color: #555;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    cursor: pointer;
-    border-radius: 15px;
-    font-size: 0.9em;
-}
-
-.view-switch button.active {
-    background-color: #FFF;
-    color: #000;
-}
-
-
 .transparent-container {
     background-color: rgba(0, 0, 0, 0.5); /* Lightly transparent black background */
     padding: 20px;
@@ -184,51 +161,14 @@ body {
 .tab {
     background-color: #BBB;
     border-radius: 50px;
-    width: 120px;
-    height: 70px;
+    width: 200px;
+    height: 270px;
 }
 
-.graph-container {
-    position: relative;
-    background-color: #151C42;
-    border: 2px solid #004080;
-    border-radius: 20px;
-    height: 350px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.graph {
-    width: 90%;
-    height: 100%;
-    border: 1px dashed #004080;
-}
-
-.nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background-color: #004080;
-    border: 2px solid #004080;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.5em;
-    text-align: center;
-    line-height: 30px;
-    cursor: pointer;
-}
-
-.nav-arrow.left {
-    left: 10px;
-}
-
-.nav-arrow.right {
-    right: 10px;
-}
+#temp {
+    color: black;
+  }
 
 /*--------------------------------------------------This is all the CSS for the daily weather----------------------------------------------*/
 
