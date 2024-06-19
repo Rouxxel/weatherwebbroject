@@ -111,7 +111,7 @@ body {
     margin: 5px 0;
 }
 
-/*---------------------------------------------This is all the CSS for the graph--------------------------------------------------------------*/
+/*---------------------------------------------This is all the CSS for forkasted weather--------------------------------------------------------------*/
 
 .header-transparent-container {
     background-color: rgba(0, 0, 0, 0.5); /* Lightly transparent black background */
@@ -163,7 +163,14 @@ body {
     border-radius: 50px;
     width: 200px;
     height: 270px;
+    text-align: center;
 }
+.tab div {
+    margin: 10px; /* add some margin to separate the elements */
+  }
+ .tab div {
+    color: #000; /* set font color to black */
+  }
 
 
 #temp {
@@ -238,6 +245,9 @@ body {
     border-radius: 10px;
     padding: 15px;
     text-align: center;
+}
+#weather_description{
+    color: black;
 }
 
 /*--------------------------------------------------This is all the CSS for the big weather news----------------------------------------------*/

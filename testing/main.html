@@ -12,20 +12,22 @@
     <script src="mainJS.js"></script>
 
     <script>defaultWeather()</script>
+    <script>forkastedWeather()</script>
 
     <!-----------------------------------------This the top naviagtion bar of the web page----------------------------------------------------->
 
 
     <div class="header">
         <div class="logo-container">
-            <img src="images/ForKastLogo.png" alt="ForKast">
+            <a href="main.html">
+                <img src="images/ForKastLogo.png" alt="ForKast">
+            </a>
             <span class="site-title">ForKast</span>
         </div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">News</a>
-            <a href="#">Contact</a>
+            <a href="main.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </div>
     
@@ -42,7 +44,7 @@
 
        <button onclick="locator()">Get current location</button>
 
-       <button onclick="test()">forkast</button>
+       
         
  
 
@@ -71,13 +73,13 @@
     <div class="transparent-container">
         <div class="content-container">
             <div class="tabs">
-                <div class="tab"></div>
-                <div class="tab"></div>
-                <div class="tab"></div>
-                <div class="tab"></div>
-                <div class="tab"></div>
-                <div class="tab"></div>
-                <div class="tab"></div>
+                <div class="tab"><div id="day1"></div><br><div id="temp1"></div><br><div id="main_description1"></div><br><div id="description1"></div></div>
+                <div class="tab"><div id="day2"></div><br><div id="temp2"></div><br><div id="main_description2"></div><br><div id="description2"></div></div>
+                <div class="tab"><div id="day3"></div><br><div id="temp3"></div><br><div id="main_description3"></div><br><div id="description3"></div></div>
+                <div class="tab"><div id="day4"></div><br><div id="temp4"></div><br><div id="main_description4"></div><br><div id="description4"></div></div>
+                <div class="tab"><div id="day5"></div><br><div id="temp5"></div><br><div id="main_description5"></div><br><div id="description5"></div></div>
+                <div class="tab"><div id="day6"></div><br><div id="temp6"></div><br><div id="main_description6"></div><br><div id="description6"></div></div>
+                <div class="tab"><div id="day7"></div><br><div id="temp7"></div><br><div id="main_description7"></div><br><div id="description7"></div></div>
             </div>
         </div>
     </div>
@@ -92,6 +94,7 @@
                 <div class="weather-box">
                     <div class="location"><div id="header-text"></div></div>
                     <img src="images/rainicon.png" alt="Rain">
+                    <div id="weather_description"></div><br>
                     <div id="temp"></div>
                 </div>
             </div>
@@ -155,43 +158,6 @@
     <div id="feels_like"></div>
    
  <!--------------------------------------This is the weather info forkast-------------------------------------------------------------------------->
- <h1>Weather Forecast</h1>
- <div id="forecast-container">
-    <div id="day1"></div>
-    <div id="temp1"></div>
-    <div id="main_description1"></div>
-    <div id="description1"></div>
-
-    <div id="day2"></div>
-    <div id="temp2"></div>
-    <div id="main_description2"></div>
-    <div id="description2"></div>
-
-    <div id="day3"></div>
-    <div id="temp3"></div>
-    <div id="main_description3"></div>
-    <div id="description3"></div>
-
-    <div id="day4"></div>
-    <div id="temp4"></div>
-    <div id="main_description4"></div>
-    <div id="description4"></div>
-
-    <div id="day5"></div>
-    <div id="temp5"></div>
-    <div id="main_description5"></div>
-    <div id="description5"></div>
-
-    <div id="day6"></div>
-    <div id="temp6"></div>
-    <div id="main_description6"></div>
-    <div id="description6"></div>
-
-    <div id="day7"></div>
-    <div id="temp7"></div>
-    <div id="main_description7"></div>
-    <div id="description7"></div>
-  </div>
 
 
 </body>

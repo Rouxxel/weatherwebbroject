@@ -84,15 +84,15 @@ function updateWeatherDisplay() {
   document.getElementById("wind_speed").textContent = `${wind_speed} m/s`;
   document.getElementById("sunrise").textContent = `${new Date(sunrise * 1000).toLocaleTimeString()}`;
   document.getElementById("sunset").textContent = `${new Date(sunset * 1000).toLocaleTimeString()}`;
-  document.getElementById("weather_main").textContent = `Weather: ${weather_main}`;
-  document.getElementById("weather_description").textContent = `Description: ${weather_description}`;
+  document.getElementById("weather_main").textContent = `${weather_main}`;
+  document.getElementById("weather_description").textContent = `${weather_description}`;
   document.getElementById("feels_like").textContent = `${feels_like}°C`;
   document.getElementById("header-text").textContent = cityInput + "'s Weather";
 }
 
 
 //------------------------------get weather for next few days-------------------------------------------------------------------------------------------
-function test() {
+function forkastedWeather() {
   // Fetch the weather forecast data
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
    .then(response => response.json())
@@ -133,12 +133,37 @@ function test() {
 }
 
 function updateForecast(day, temp, mainDescription, description, dayNumber) {
+  document.getElementById(`day${dayNumber}`).textContent = `${day}`;
+  document.getElementById(`temp${dayNumber}`).textContent = `Temp: ${temp}°C`;
+  document.getElementById(`main_description${dayNumber}`).textContent = `Weather: ${mainDescription}`;
+  document.getElementById(`description${dayNumber}`).textContent = `${description}`;
+}
+
+//-------------------------this is a new test for the 7 days weather-----------------------------------------------------------------------
+function fetchDailyWeather() {
+  // Fetch the daily weather forecast data
+  fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityInput}&cnt=7&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
+   .then(response => response.json())
+   .then(data => {
+      // Extract the data for each day
+      const dailyForecast = data.list;
+      for (let i = 0; i < dailyForecast.length; i++) {
+        const forecast = dailyForecast[i];
+        const date = new Date(forecast.dt * 1000);
+        const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+
+        updateDailyForecast(day, forecast.temp.day, forecast.weather[0].main, forecast.weather[0].description, i + 1);
+      }
+    })
+   .catch(error => console.error('Error:', error));
+}
+
+function updateDailyForecast(day, temp, mainDescription, description, dayNumber) {
   document.getElementById(`day${dayNumber}`).textContent = `Day: ${day}`;
   document.getElementById(`temp${dayNumber}`).textContent = `Temperature: ${temp}°C`;
   document.getElementById(`main_description${dayNumber}`).textContent = `Weather: ${mainDescription}`;
   document.getElementById(`description${dayNumber}`).textContent = `Description: ${description}`;
 }
-
 
 //------------------------------suggested places-------------------------------------------------------------------------------------------
 // Existing variables and functions
@@ -179,3 +204,26 @@ function getRandomCityWeather() {
  
 // Call the function to load random city weather on page load
 document.addEventListener("DOMContentLoaded", getRandomCityWeather);
+
+//--------------------------------------image display---------------------------------------------------------------------------------------
+function imageDisplay(){
+  for(i = 0; 0 <= 5; i++){
+  switch (mainDescription[i]) {
+    case "Rain":
+      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 1);
+      break;
+    case "Wind":
+      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 2);
+      break;
+    case "Clouds":
+      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 3);
+      break;
+    case "Thunder":
+      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 4);
+      break;
+    case "Sun":
+      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 5);
+      break;
+    }
+  }
+}
