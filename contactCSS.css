@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2C2E83;
+    color: white;
+}
+
+/*--------------------------------------------------This is all the CSS for nav barr----------------------------------------------*/
+
+.header {
+    background-color: #00082B;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 40px;
+    margin-right: 10px; /* Adjust the space between the image and the text */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.site-title {
+    color: white;
+    font-size: 1.5em;
+    margin: 0;
+}
+.header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+/*--------------------------------------------------This is all the CSS for team information-------------------------------------------------*/
+
+.container {
+    padding: 20px;
+}
+.team-contacts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.team-contacts-title {
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+.team-contacts {
+    background-color: #7D81D5;
+    padding: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+}
+.team-member {
+    text-align: left;
+}
+.team-member img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/*--------------------------------------------------This is all the CSS for the thank you box-------------------------------------------------*/
+
+.thank-you-box {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+/*--------------------------------------------------This is all the CSS for the footer--------------------------------------------------------*/
+
+.footer {
+    background-color: #F0F0F0;
+    padding: 20px;
+    color: black;
+    text-align: center;
+}
+.footer a {
+    color: black;
+    margin: 0 15px;
+    text-decoration: none;
+}
+.footer img {
+    height: 30px;
+}
