@@ -177,6 +177,14 @@ body {
     color: black;
   }
 
+.weather-image {
+    width: 80px;  /* Example width */
+    height: 80px; /* Example height */
+    object-fit: cover; /* Ensures the image covers the given dimensions */
+    margin: 10px;  /* Optional: Adds some spacing around the images */
+  }
+  
+
 /*--------------------------------------------------This is all the CSS for the daily weather----------------------------------------------*/
 
 .transparent-header-weather {

@@ -15,21 +15,57 @@ let day7MainDescription = '';
 
 //----------------------------------------locator---------------------------------------------------------------------------------------------
 
-function locator(){
-
-var request = new XMLHttpRequest();
-
-request.open('GET', 'https://api.ipdata.co/?api-key=6ef951ed663536111bce6535c141078d94cad53fcca9f55e34e22568');
-
-request.setRequestHeader('Accept', 'application/json');
-
-request.onreadystatechange = function () {
-  if (this.readyState === 4) {
-    console.log(this.responseText);
-  }
-};
-
-request.send();
+function locator() {
+  var request = new XMLHttpRequest();
+ 
+  request.open('GET', 'https://api.ipdata.co/?api-key=6ef951ed663536111bce6535c141078d94cad53fcca9f55e34e22568');
+ 
+  request.setRequestHeader('Accept', 'application/json');
+ 
+  request.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      // Parse the JSON response
+      var responseData = JSON.parse(this.responseText);
+     
+      // Extract city name from response (you might want to check the structure of the API response)
+      var cityName = responseData.city;
+ 
+      // Update global variable cityInput with the new city name
+      cityInput = cityName;
+ 
+      // Fetch weather data for the new city
+      fetchWeatherByCity();
+    }
+  };
+ 
+  request.send();
+}
+function fetchWeatherByCity() {
+  // Fetch the weather data for the searched city
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
+    .then(res => res.json())
+    .then(dataSearch => {
+ 
+      // Extract the required weather information
+      temp = dataSearch.main.temp;
+      temp_max = dataSearch.main.temp_max;
+      temp_min = dataSearch.main.temp_min;
+      humidity = dataSearch.main.humidity;
+      wind_speed = dataSearch.wind.speed;
+      sunrise = dataSearch.sys.sunrise;
+      sunset = dataSearch.sys.sunset;
+      weather_main = dataSearch.weather[0].main;
+      weather_description = dataSearch.weather[0].description;
+      feels_like = dataSearch.main.feels_like;
+ 
+      // Update the weather display
+      updateWeatherDisplay();
+     
+      // Fetch forecasted weather for the new city
+      forkastedWeather();
+    })
+    .catch(error => console.error('Error:', error));
+    imageDisplay();
 }
 
 //------------------------------weather Default---------------------------------------------------------------------------------------------
@@ -51,6 +87,7 @@ function defaultWeather() {
 
       // Call the function to update the HTML elements
       updateWeatherDisplay();
+      imageDisplay();
     });
 }
 //----------------------------------------weather of searched location-------------------------------------------------------------------------
@@ -79,6 +116,7 @@ function searchCity() {
       updateWeatherDisplay();
     })
     .catch(error => console.error('Error:', error));
+    imageDisplay();
 }
 
 function updateWeatherDisplay() {
@@ -90,7 +128,6 @@ function updateWeatherDisplay() {
   document.getElementById("wind_speed").textContent = `${wind_speed} m/s`;
   document.getElementById("sunrise").textContent = `${new Date(sunrise * 1000).toLocaleTimeString()}`;
   document.getElementById("sunset").textContent = `${new Date(sunset * 1000).toLocaleTimeString()}`;
-  document.getElementById("weather_main").textContent = `${weather_main}`;
   document.getElementById("weather_description").textContent = `${weather_description}`;
   document.getElementById("feels_like").textContent = `${feels_like}°C`;
   document.getElementById("header-text").textContent = cityInput + "'s Weather";
@@ -101,8 +138,8 @@ function updateWeatherDisplay() {
 function forkastedWeather() {
   // Fetch the weather forecast data
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
-   .then(response => response.json())
-   .then(data => {
+    .then(response => response.json())
+    .then(data => {
       // Extract the data for each day
       const forecastList = data.list;
       for (let i = 0; i < forecastList.length; i++) {
@@ -141,14 +178,15 @@ function forkastedWeather() {
             break;
         }
       }
+      // Call the imageDisplay function after all descriptions are set
+      imageDisplay();
     })
-   .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error:', error));
 }
 
 function updateForecast(day, temp, mainDescription, description, dayNumber) {
   document.getElementById(`day${dayNumber}`).textContent = `${day}`;
   document.getElementById(`temp${dayNumber}`).textContent = `Temp: ${temp}°C`;
-  document.getElementById(`main_description${dayNumber}`).textContent = `Weather: ${mainDescription}`;
   document.getElementById(`description${dayNumber}`).textContent = `${description}`;
 }
 
@@ -193,25 +231,32 @@ function getRandomCityWeather() {
 document.addEventListener("DOMContentLoaded", getRandomCityWeather);
 
 //--------------------------------------image display---------------------------------------------------------------------------------------
-function imageDisplay(){
-  for(i = 0; i <= 5; i++){
-    
-    switch (mainDescription[i]) {
-      case "Rain":
-        document.getElementById("image").src = "images/rainicon.png";
-        break;
-      case "Wind":
-        document.getElementById("image").src = "images/wind.png";
-        break;
-      case "Clouds":
-        document.getElementById("image").src = "images/cloudy.jpg";
-        break;
-      case "Thunder":
-        document.getElementById("image").src = "images/thunder.png";
-        break;
-      case "Sun":
-        document.getElementById("image").src = "images/sunny.jpg";
-        break;
-    }
+function imageDisplay() {
+  const weatherIcons = {
+    "Rain": "images/rainicon.png",
+    "Wind": "images/windy.jpg",
+    "Clouds": "images/cloudy.jpg",
+    "Thunderstorm": "images/thunder.jpg",
+    "Clear": "images/sunny.png",
+    // Add more weather types and their corresponding images here if needed
+  };
+
+  // Update the main weather image
+  const mainImageElement = document.getElementById("imageMain");
+  if (mainImageElement) {
+    mainImageElement.src = weatherIcons[weather_main] || "images/default.jpg"; // Default image if description is not matched
   }
+
+  // An array to hold the main descriptions for each day
+  const descriptions = [day1MainDescription, day2MainDescription, day3MainDescription, day4MainDescription, day5MainDescription, day6MainDescription, day7MainDescription];
+
+  // Iterate through each day's description and update the image source
+  descriptions.forEach((description, index) => {
+    const imageElement = document.getElementById(`image${index + 1}`);
+    if (imageElement) {
+      imageElement.src = weatherIcons[description] || "images/default.jpg"; // Default image if description is not matched
+    }
+  });
 }
+
+
