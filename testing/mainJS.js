@@ -1,7 +1,17 @@
 //-------------------These are the global variables------------------------------------------------------------------------------------------
-var lat = 52.40;
-var lon = 12.96;
 let cityInput = 'Berlin';
+
+// Define global variables to hold the weather data
+let temp, temp_max, temp_min, humidity, wind_speed, sunrise, sunset, weather_main, weather_description, feels_like;
+
+// Global variables to store the main description for each day
+let day1MainDescription = '';
+let day2MainDescription = '';
+let day3MainDescription = '';
+let day4MainDescription = '';
+let day5MainDescription = '';
+let day6MainDescription = '';
+let day7MainDescription = '';
 
 //----------------------------------------locator---------------------------------------------------------------------------------------------
 
@@ -23,10 +33,6 @@ request.send();
 }
 
 //------------------------------weather Default---------------------------------------------------------------------------------------------
-
-// Define global variables to hold the weather data
-let temp, temp_max, temp_min, humidity, wind_speed, sunrise, sunset, weather_main, weather_description, feels_like;
-
 function defaultWeather() {
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
     .then(res => res.json())
@@ -107,24 +113,31 @@ function forkastedWeather() {
         switch (i) {
           case 0:
             updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 1);
+            day1MainDescription = forecast.weather[0].main;
             break;
           case 8:
             updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 2);
+            day2MainDescription = forecast.weather[0].main;
             break;
           case 16:
             updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 3);
+            day3MainDescription = forecast.weather[0].main;
             break;
           case 24:
             updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 4);
+            day4MainDescription = forecast.weather[0].main;
             break;
           case 32:
             updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 5);
+            day5MainDescription = forecast.weather[0].main;
             break;
           case 40:
             updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 6);
+            day6MainDescription = forecast.weather[0].main;
             break;
           case 48:
             updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 7);
+            day7MainDescription = forecast.weather[0].main;
             break;
         }
       }
@@ -137,32 +150,6 @@ function updateForecast(day, temp, mainDescription, description, dayNumber) {
   document.getElementById(`temp${dayNumber}`).textContent = `Temp: ${temp}°C`;
   document.getElementById(`main_description${dayNumber}`).textContent = `Weather: ${mainDescription}`;
   document.getElementById(`description${dayNumber}`).textContent = `${description}`;
-}
-
-//-------------------------this is a new test for the 7 days weather-----------------------------------------------------------------------
-function fetchDailyWeather() {
-  // Fetch the daily weather forecast data
-  fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${cityInput}&cnt=7&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
-   .then(response => response.json())
-   .then(data => {
-      // Extract the data for each day
-      const dailyForecast = data.list;
-      for (let i = 0; i < dailyForecast.length; i++) {
-        const forecast = dailyForecast[i];
-        const date = new Date(forecast.dt * 1000);
-        const day = date.toLocaleDateString('en-US', { weekday: 'long' });
-
-        updateDailyForecast(day, forecast.temp.day, forecast.weather[0].main, forecast.weather[0].description, i + 1);
-      }
-    })
-   .catch(error => console.error('Error:', error));
-}
-
-function updateDailyForecast(day, temp, mainDescription, description, dayNumber) {
-  document.getElementById(`day${dayNumber}`).textContent = `Day: ${day}`;
-  document.getElementById(`temp${dayNumber}`).textContent = `Temperature: ${temp}°C`;
-  document.getElementById(`main_description${dayNumber}`).textContent = `Weather: ${mainDescription}`;
-  document.getElementById(`description${dayNumber}`).textContent = `Description: ${description}`;
 }
 
 //------------------------------suggested places-------------------------------------------------------------------------------------------
@@ -207,23 +194,24 @@ document.addEventListener("DOMContentLoaded", getRandomCityWeather);
 
 //--------------------------------------image display---------------------------------------------------------------------------------------
 function imageDisplay(){
-  for(i = 0; 0 <= 5; i++){
-  switch (mainDescription[i]) {
-    case "Rain":
-      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 1);
-      break;
-    case "Wind":
-      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 2);
-      break;
-    case "Clouds":
-      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 3);
-      break;
-    case "Thunder":
-      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 4);
-      break;
-    case "Sun":
-      updateForecast(day, forecast.main.temp, forecast.weather[0].main, forecast.weather[0].description, 5);
-      break;
+  for(i = 0; i <= 5; i++){
+    
+    switch (mainDescription[i]) {
+      case "Rain":
+        document.getElementById("image").src = "images/rainicon.png";
+        break;
+      case "Wind":
+        document.getElementById("image").src = "images/wind.png";
+        break;
+      case "Clouds":
+        document.getElementById("image").src = "images/cloudy.jpg";
+        break;
+      case "Thunder":
+        document.getElementById("image").src = "images/thunder.png";
+        break;
+      case "Sun":
+        document.getElementById("image").src = "images/sunny.jpg";
+        break;
     }
   }
 }
