@@ -7,3 +7,6 @@ key = 6ef951ed663536111bce6535c141078d94cad53fcca9f55e34e22568
 
 API = api.openweathermap.org/data/2.5/forecast/daily?q=London&units=metric&cnt=7&appid={API key}
 forkast for 7 days by city
+
+API = https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/London,UK/next7days?unitGroup=us&key=YOUR_API_KEY
+key = RHK7VYYRZXLYRWCCNR94GGRDW

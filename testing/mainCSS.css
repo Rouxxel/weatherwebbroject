@@ -201,6 +201,11 @@ button {
 #weather_description{
     color: black;
 }
+#weather-image {
+    width: 100px; /* adjust the width to your desired size */
+    height: 100px; /* adjust the height to your desired size */
+    object-fit: cover; /* or use 'contain' to scale the image down */
+  }
 
 /*---------------------------------------------This is all the CSS for forkasted weather--------------------------------------------------------------*/
 
@@ -254,7 +259,7 @@ button {
     background-color: #BBB;
     border-radius: 50px;
     width: 200px;
-    height: 300px;
+    height: 350px;
     text-align: center;
 }
 .tab div {

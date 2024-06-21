@@ -43,7 +43,7 @@
         <img src="images/backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
         <div class="box box1">
             <input type="text" class="search-box" id="city-input" placeholder="Search City">
-            <button onclick="searchCity(); forkastedWeather()">Search</button><br>
+            <button onclick="searchCity(); forkastedWeather(); imageDisplayToday()">Search</button><br>
             <br><button onclick="locator()">Get current location</button>
         </div>
 
@@ -72,7 +72,7 @@
         <div class="main-weather" id="main-weather">
             <div class="weather-box">
                 <div class="location"><div id="header-text"></div></div>
-                <img id="imageMain" class="weather-image" src="" alt="Main Weather Image">
+                <img id="weather-image" src="" alt="Weather Image">
                 <div id="weather_description"></div><br>
                 <div id="temp"></div>
             </div>
@@ -100,16 +100,16 @@
 <div class="transparent-container">
     <div class="content-container">
         <div class="tabs">
-            <div class="tab"><div id="day1"></div><br><div id="temp1"></div><br><img id="image1" class="weather-image" src="" alt="Weather Image 1"><br><div id="description1"></div></div>
-            <div class="tab"><div id="day2"></div><br><div id="temp2"></div><br><img id="image2" class="weather-image" src="" alt="Weather Image 2"><br><div id="description2"></div></div>
-            <div class="tab"><div id="day3"></div><br><div id="temp3"></div><br><img id="image3" class="weather-image" src="" alt="Weather Image 3"><br><div id="description3"></div></div>
-            <div class="tab"><div id="day4"></div><br><div id="temp4"></div><br><img id="image4" class="weather-image" src="" alt="Weather Image 4"><br><div id="description4"></div></div>
-            <div class="tab"><div id="day5"></div><br><div id="temp5"></div><br><img id="image5" class="weather-image" src="" alt="Weather Image 5"><br><div id="description5"></div></div>
-           <!--<div class="tab"><div id="day6"></div><br><div id="temp6"></div><br><div id="main_description6"></div><br><div id="description6"></div></div>-->
-           <!--<div class="tab"><div id="day7"></div><br><div id="temp7"></div><br><div id="main_description7"></div><br><div id="description7"></div></div>-->
+            <div class="tab"><div id="day1"></div><br><div id="temp1"></div><br><img id="image1" class="weather-image" alt="Day 1 weather image"><br><div id="description1"></div></div>
+            <div class="tab"><div id="day2"></div><br><div id="temp2"></div><br><img id="image2" class="weather-image" alt="Weather Icon for Day 2"><br><div id="description2"></div></div>
+            <div class="tab"><div id="day3"></div><br><div id="temp3"></div><br><img id="image3" class="weather-image" alt="Weather Icon for Day 3"><br><div id="description3"></div></div>
+            <div class="tab"><div id="day4"></div><br><div id="temp4"></div><br><img id="image4" class="weather-image" alt="Weather Icon for Day 4"><br><div id="description4"></div></div>
+            <div class="tab"><div id="day5"></div><br><div id="temp5"></div><br><img id="image5" class="weather-image" alt="Weather Icon for Day 5"><br><div id="description5"></div></div>
+            <div class="tab"><div id="day6"></div><br><div id="temp6"></div><br><img id="image6" class="weather-image" alt="Weather Icon for Day 6"><br><div id="description6"></div></div>
+            <div class="tab"><div id="day7"></div><br><div id="temp7"></div><br><img id="image7" class="weather-image" alt="Weather Icon for Day 7"><br><div id="description7"></div></div>
         </div>
     </div>
-</div>    
+</div>
     
     
 
@@ -124,7 +124,9 @@
     <p>World | Europe | Americas | Asia | Africa | Australia | Antarctica</p>
     <p>2024 ForKast, Inc. All rights reserved.</p>
     <p>Terms of Use | Privacy Policy | Cookie Policy</p>
-</div>    
+</div> 
+
+
 
 
 </body>
