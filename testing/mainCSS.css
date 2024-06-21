@@ -1,8 +1,9 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #1f1b42;
+    background-color: #191a56;
     color: white;
+    font-family: 'Quantico', sans-serif;
 }
 
 /*-------------------------------------------This is the CSS to do with navagation bar--------------------------------------------------------*/
@@ -66,21 +67,35 @@ body {
     background: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     max-width: 80%;
-    height: 35px;
+    height: 43px;
     margin-bottom: 10px; /* Space between box1 and suggestions-container */
 }
 
 /*----------------------------------------------This is the CSS for the search bar------------------------------------------------------------*/
 
 .box1 .search-box {
-    width: 960px;
-    height: 35px;
+    width: 700px;
+    height: 43px;
     padding: 0px;
     border-radius: 5px;
     border: 1px solid #00082B;
     background-color: rgba(255, 255, 255, 0.9);
     color: #00082B;
 }
+
+button {
+    background-color: #1f1b42; /* Green */
+    color: white;
+    padding: 5px 8px; /* increased padding to make the button larger */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* increased font size to make the button larger */
+  }
+  
+  button:hover {
+    background-color: #070707;
+  }
 
 
 /*-------------------------------------------This is the CSS for the suggestion boxes---------------------------------------------------------*/
@@ -111,6 +126,82 @@ body {
     margin: 5px 0;
 }
 
+
+/*--------------------------------------------------This is all the CSS for the daily weather----------------------------------------------*/
+
+.transparent-header-weather {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 450px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ 
+.header-name-header {
+    color: white;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+ 
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+ 
+.main-weather {
+    text-align: center;
+    margin-bottom: 20px;
+}
+ 
+.weather-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+ 
+.location {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: black;
+}
+ 
+.temp {
+    font-size: 2em;
+    margin-top: 10px;
+    color: black;
+}
+ 
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    gap: 20px;
+    width: 350px;
+    max-width: 600px; /* Adjust the max width to control the grid size */
+}
+ 
+.weather-item {
+    background: #4d4de4;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+#weather_description{
+    color: black;
+}
+
 /*---------------------------------------------This is all the CSS for forkasted weather--------------------------------------------------------------*/
 
 .header-transparent-container {
@@ -119,7 +210,7 @@ body {
     border-radius: 20px;
     width: 90%;
     margin: auto;
-    margin-top: 900px; /* Adjust this value to change the spacing above the header */
+    margin-top: 280px; /* Adjust this value to change the spacing above the header */
     display: flex;
     justify-content: center; /* Center the content horizontally */
     align-items: center; /* Center the content vertically */
@@ -156,13 +247,14 @@ body {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
+    padding: 20px;
 }
 
 .tab {
     background-color: #BBB;
     border-radius: 50px;
     width: 200px;
-    height: 270px;
+    height: 300px;
     text-align: center;
 }
 .tab div {
@@ -185,79 +277,6 @@ body {
   }
   
 
-/*--------------------------------------------------This is all the CSS for the daily weather----------------------------------------------*/
-
-.transparent-header-weather {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 20px;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 300px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
- 
-.header-name-header {
-    color: white;
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
- 
-.weather-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
- 
-.main-weather {
-    text-align: center;
-    margin-bottom: 20px;
-}
- 
-.weather-box {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
- 
-.location {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    color: black;
-}
- 
-.temp {
-    font-size: 2em;
-    margin-top: 10px;
-    color: black;
-}
- 
-.details-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
-    gap: 20px;
-    width: 100%;
-    max-width: 600px; /* Adjust the max width to control the grid size */
-}
- 
-.weather-item {
-    background: #4d4de4;
-    color: white;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-}
-#weather_description{
-    color: black;
-}
-
 /*--------------------------------------------------This is all the CSS to do with footer-----------------------------------------------------*/
 
 .footer {
@@ -265,8 +284,8 @@ body {
     padding: 20px;
     color: black;
     text-align: center;
-    margin-bottom: 0px;
-    margin-top: 100px;
+    margin-bottom: 50px;
+    margin-top: 250px;
 }
 .footer a {
     color: black;

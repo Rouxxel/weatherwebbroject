@@ -133,6 +133,7 @@ function updateWeatherDisplay() {
   document.getElementById("header-text").textContent = cityInput + "'s Weather";
 }
 
+//------------------------------Search using enter----------------------------------------------------------------------------------------------
 
 //------------------------------get weather for next few days-------------------------------------------------------------------------------------------
 function forkastedWeather() {

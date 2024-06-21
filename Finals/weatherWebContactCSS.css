@@ -2,11 +2,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #2C2E83;
+    background-color: #191a56;
     color: white;
+    font-family: 'Quantico', sans-serif;
 }
 
-/*--------------------------------------------------This is all the CSS for nav barr----------------------------------------------*/
+/*--------------------------------------------------This is all the CSS for nav barr----------------------------------------------------------*/
 
 .header {
     background-color: #00082B;
@@ -94,6 +95,9 @@ body {
     padding: 20px;
     color: black;
     text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    height: 150px;
 }
 .footer a {
     color: black;
