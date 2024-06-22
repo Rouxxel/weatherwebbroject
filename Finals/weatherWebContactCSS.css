@@ -6,9 +6,9 @@ body {
     color: white;
     font-family: 'Quantico', sans-serif;
 }
-
+ 
 /*--------------------------------------------------This is all the CSS for nav barr----------------------------------------------------------*/
-
+ 
 .header {
     background-color: #00082B;
     padding: 10px 20px;
@@ -16,17 +16,17 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
+ 
 .logo-container img {
     height: 40px;
     margin-right: 10px; /* Adjust the space between the image and the text */
 }
-
+ 
 .logo-container {
     display: flex;
     align-items: center;
 }
-
+ 
 .site-title {
     color: white;
     font-size: 1.5em;
@@ -37,9 +37,9 @@ body {
     margin: 0 15px;
     text-decoration: none;
 }
-
+ 
 /*--------------------------------------------------This is all the CSS for team information-------------------------------------------------*/
-
+ 
 .container {
     padding: 20px;
 }
@@ -52,7 +52,6 @@ body {
     text-align: center;
     width: 100%;
     max-width: 1000px;
-    margin-left: 50px;
     margin-bottom: 20px;
 }
 .team-contacts {
@@ -75,9 +74,15 @@ body {
     display: block;
     margin-bottom: 10px;
 }
-
+@media (max-width: 768px) {
+    .team-contacts {
+        grid-template-columns: 1fr; /* Display one column for screens <= 768px */
+    }
+}
+ 
+ 
 /*--------------------------------------------------This is all the CSS for the thank you box-------------------------------------------------*/
-
+ 
 .thank-you-box {
     background-color: white;
     color: black;
@@ -87,9 +92,9 @@ body {
     max-width: 600px;
     text-align: center;
 }
-
+ 
 /*--------------------------------------------------This is all the CSS for the footer--------------------------------------------------------*/
-
+ 
 .footer {
     background-color: #F0F0F0;
     padding: 20px;
@@ -97,7 +102,7 @@ body {
     text-align: center;
     margin-top: 100px;
     margin-bottom: 50px;
-    height: 150px;
+    height: 160px;
 }
 .footer a {
     color: black;

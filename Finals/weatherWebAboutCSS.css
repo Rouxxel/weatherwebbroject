@@ -17,7 +17,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: fixed;
+    position: flex;
     top: 0;
     z-index: 1000;
 }
@@ -25,6 +25,7 @@ body {
 .logo-container img {
     height: 40px;
     margin-right: 10px; /* Adjust the space between the image and the text */
+    margin-left: 20px;
 }
 
 .logo-container {
@@ -40,8 +41,11 @@ body {
 
 .header nav a {
     color: white;
-    margin: 0 15px;
+    margin: 0 5px;
     text-decoration: none;
+    margin-right: 25px;
+    padding: 5px;
+
 }
 
 /*------------------------------------------This is the CSS to do with about us box and info--------------------------------------------------*/

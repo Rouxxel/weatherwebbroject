@@ -62,7 +62,7 @@ function fetchWeatherByCity() {
       imageDisplayToday();
       forkastedWeather();
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error:There was an error in locating you, please try again later'));
 }
 
 //------------------------------weather Default---------------------------------------------------------------------------------------------
@@ -84,10 +84,29 @@ function defaultWeather() {
       updateWeatherDisplay();
     });
 }
+
+//----------------------------------------Validating search input and updating cityInput-------------------------------------------------------------------------
+function gettingSearchedCity(){
+  cityInput = document.getElementById('city-input').value.trim();
+
+  // Check for special characters
+  const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+  if (specialChars.test(cityInput)) {
+    alert("Invalid input: Special characters are not allowed.");
+  } else {
+    // Validate input (e.g., only allow alphanumeric characters and spaces)
+    const validChars = /^[a-zA-Z\s]+$/;
+    if (!validChars.test(cityInput)) {
+      alert("Invalid input: Only letters and spaces are allowed.");
+    } else {
+      // If all criteria are met, call the searchCity function
+      searchCity();
+    }
+  }
+}
+
 //----------------------------------------weather of searched location-------------------------------------------------------------------------
 function searchCity() {
-  cityInput = document.getElementById('city-input').value;
-
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
     .then(res => res.json())
     .then(dataSearch => {
@@ -105,7 +124,7 @@ function searchCity() {
 
       updateWeatherDisplay();
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error: in searching your city, please try again later'));
     forkastedWeather();
     imageDisplayToday();
     console.log(weather_main)
@@ -185,7 +204,7 @@ function forkastedWeather() {
           }
           dailyImageDisplay(); // Call dailyImageDisplay function after updating forecast
       })
-  .catch(error => console.error('Error:', error));
+  .catch(error => console.error('Error: There was an error in getting your forkasted weather, please try again later'));
 }
 
 function updateForecast(day, temp, mainDescription, description, dayNumber) {
@@ -220,7 +239,7 @@ function dailyImageDisplay(){
         image = 'sunny.png';
         break;
       case "Overcast":
-        image = 'thunder.jpg';
+        image = 'overcast.png';
         break;
       default:
         image = 'default.jpg'; // default image if condition not found
