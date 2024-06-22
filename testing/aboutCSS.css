@@ -9,7 +9,7 @@ body {
     color: white;
     overflow-x: hidden;
 }
-/*-------------------------------------------This is the CSS to do with navagation bar--------------------------------------------------------*/
+/*-------------------------------------------This is the CSS to do with navigation bar--------------------------------------------------------*/
 .header {
     background-color: #00082B;
     padding: 10px 20px;
@@ -21,35 +21,35 @@ body {
     top: 0;
     z-index: 1000;
 }
-
+ 
 .logo-container img {
     height: 40px;
     margin-right: 10px; /* Adjust the space between the image and the text */
     margin-left: 20px;
 }
-
+ 
 .logo-container {
     display: flex;
     align-items: center;
 }
-
+ 
 .site-title {
     color: white;
     font-size: 1.5em;
     margin: 0;
 }
-
+ 
 .header nav a {
     color: white;
-    margin: 0 5px;
+    margin: 0 -4px;
     text-decoration: none;
     margin-right: 25px;
     padding: 5px;
-
+ 
 }
-
+ 
 /*------------------------------------------This is the CSS to do with about us box and info--------------------------------------------------*/
-
+ 
 .box {
     width: 80%;
     max-width: 1200px;
@@ -65,48 +65,48 @@ body {
     text-align: center;
     margin-top: 80px; /* Ensure content is not hidden behind the fixed header */
 }
-
+ 
 .box h1 {
     margin-top: 0;
 }
-
+ 
 .box-content {
     padding: 20px;
 }
-
+ 
 .box h1, .box h2 {
     text-align: left;
     color: black;
 }
-
+ 
 .box p, .box ul {
     color: black;
     text-align: justify;
 }
-
+ 
 .box ul {
     list-style-type: none;
     padding-left: 0;
 }
-
+ 
 .top-box {
     height: 250px;
     justify-content: center;
 }
-
+ 
 .top-box .forkast-text {
     font-size: 60px;
     margin: 0;
     margin-top: -5px; /* Adjust this value to move the text down */
 }
-
+ 
 /*----------------------------------------This is the CSS to do with bottom box---------------------------------------------------------------*/
-
+ 
 .bottom-box {
     height: 250px;
     justify-content: center;
 }
-
+ 
 /*-----------------------------------------This is the CSS to do with footer------------------------------------------------------------------*/
 .footer {
     background-color: #F0F0F0;
@@ -129,4 +129,3 @@ body {
 .footer img {
     height: 30px;
 }
-

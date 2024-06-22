@@ -35,7 +35,6 @@ function locator() {
       cityInput = cityName;
  
       fetchWeatherByCity();
-      imageDisplayToday();
     }
   };
  
@@ -54,12 +53,9 @@ function fetchWeatherByCity() {
       wind_speed = dataSearch.wind.speed;
       sunrise = dataSearch.sys.sunrise;
       sunset = dataSearch.sys.sunset;
-      weather_main = dataSearch.weather[0].main;
-      weather_description = dataSearch.weather[0].description;
       feels_like = dataSearch.main.feels_like;
  
       updateWeatherDisplay();
-      imageDisplayToday();
       forkastedWeather();
     })
     .catch(error => console.error('Error:There was an error in locating you, please try again later'));
@@ -77,11 +73,10 @@ function defaultWeather() {
       wind_speed = dataDefault.wind.speed;
       sunrise = dataDefault.sys.sunrise;
       sunset = dataDefault.sys.sunset;
-      weather_main = dataDefault.weather[0].main;
-      weather_description = dataDefault.weather[0].description;
       feels_like = dataDefault.main.feels_like;
 
       updateWeatherDisplay();
+      todaysImage();
     });
 }
 
@@ -118,15 +113,13 @@ function searchCity() {
       wind_speed = dataSearch.wind.speed;
       sunrise = dataSearch.sys.sunrise;
       sunset = dataSearch.sys.sunset;
-      weather_main = dataSearch.weather[0].main;
-      weather_description = dataSearch.weather[0].description;
       feels_like = dataSearch.main.feels_like;
 
       updateWeatherDisplay();
     })
     .catch(error => console.error('Error: in searching your city, please try again later'));
     forkastedWeather();
-    imageDisplayToday();
+    todaysImage();
     console.log(weather_main)
 }
 
@@ -138,27 +131,32 @@ function updateWeatherDisplay() {
   document.getElementById("wind_speed").textContent = `${wind_speed} m/s`;
   document.getElementById("sunrise").textContent = `${new Date(sunrise * 1000).toLocaleTimeString()}`;
   document.getElementById("sunset").textContent = `${new Date(sunset * 1000).toLocaleTimeString()}`;
-  document.getElementById("weather_description").textContent = `${weather_description}`;
   document.getElementById("feels_like").textContent = `${feels_like}°C`;
   document.getElementById("header-text").textContent = cityInput + "'s Weather";
 }
 
 //--------------------------------------image display for todays weather---------------------------------------------------------------------------------------
-function imageDisplayToday(){
-  let imageElement = document.getElementById("weather-image");
-  switch (weather_main){
-    case "Clear":
-      imageElement.src = "images/sunny.png";
-      break;
+function todaysImage(){
+  switch (weather_main) {
     case "Rain":
-      imageElement.src = "images/rainicon.png";
+      mainImage = 'rainicon.png';
       break;
-    case "Clouds":
-      imageElement.src = "images/cloudy.jpg";
+    case "Partially cloudy":
+      mainImage = 'cloudy.jpg';
+      break;
+    case "Clear":
+      mainImage = 'sunny.png';
+      break;
+    case "Overcast":
+      mainImage = 'overcast.png';
       break;
     default:
-      imageElement.src = 'images/default.jpg'; 
-  } 
+      mainImage = 'default.jpg'; // default image if condition not found
+  }
+  const mainImageElement = document.getElementById('main-image');
+  if (mainImageElement) {
+    mainImageElement.src = `images/${mainImage}`; // assuming images are in an "images" folder
+  }
 }
 //------------------------------get weather for next few days-------------------------------------------------------------------------------------------
 
@@ -177,6 +175,7 @@ function forkastedWeather() {
               switch (i) {
                   case 0:
                       conditionDay1 = condition;
+                      weather_description = dayData.description;
                       break;
                   case 1:
                       conditionDay2 = condition;
@@ -197,9 +196,7 @@ function forkastedWeather() {
                       conditionDay7 = condition;
                       break;
               }
-
               
-
               updateForecast(day, dayData.temp, dayData.conditions, dayData.description, i + 1);
           }
           dailyImageDisplay(); // Call dailyImageDisplay function after updating forecast
@@ -221,11 +218,22 @@ function updateForecast(day, temp, mainDescription, description, dayNumber) {
   if (descriptionElement) {
       descriptionElement.textContent = `${description}`;
   }
+  
+  // Add the following lines to update the weather main and description
+  const weatherMainElement = document.getElementById('weather-main');
+  const weatherDescriptionElement = document.getElementById('weather-description');
+  
+  if (weatherMainElement) {
+      weatherMainElement.textContent = `${weather_main}`;
+  }
+  if (weatherDescriptionElement) {
+      weatherDescriptionElement.textContent = `${weather_description}`;
+  }
 }
 //--------------------------------------image display for forkast---------------------------------------------------------------------------------------
-function dailyImageDisplay(){
+function dailyImageDisplay() {
   const conditions = [conditionDay1, conditionDay2, conditionDay3, conditionDay4, conditionDay5, conditionDay6, conditionDay7];
-  
+
   for (let i = 0; i < conditions.length; i++) {
     let image;
     switch (conditions[i]) {
@@ -244,12 +252,23 @@ function dailyImageDisplay(){
       default:
         image = 'default.jpg'; // default image if condition not found
     }
-    const imageElement = document.getElementById(`image${i + 1}`);
-    if (imageElement) {
-      imageElement.src = `images/${image}`; // assuming images are in an "images" folder
+
+    if (i === 0) {
+      // Day 1: multiple elements
+      const day1ImageElements = document.querySelectorAll('.day1-image');
+      day1ImageElements.forEach(element => {
+        element.src = `images/${image}`;
+      });
+    } else {
+      // Other days: single element
+      const imageElement = document.getElementById(`image${i + 1}`);
+      if (imageElement) {
+        imageElement.src = `images/${image}`;
+      }
     }
   }
 }
+
 
 
 //------------------------------suggested places-------------------------------------------------------------------------------------------
