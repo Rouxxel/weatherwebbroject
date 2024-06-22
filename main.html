@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForKast</title>
+    <link rel="stylesheet" type="text/css" href="mainCSS.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+
+    <script src="mainJS.js"></script>
+
+    <script>defaultWeather()</script>
+    <script>forkastedWeather()</script>
+    <script>fetchWeatherByCity()</script>
+    
+    
+
+    <!-----------------------------------------This the top naviagtion bar of the web page----------------------------------------------------->
+
+
+    <div class="header">
+        <div class="logo-container">
+            <a href="main.html">
+                <img src="images/ForKastLogo.png" alt="ForKast">
+            </a>
+            <span class="site-title">ForKast</span>
+        </div>
+        <nav>
+            <a href="main.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+    
+
+<!-----------------------------------------------This is the background image and search bar--------------------------------------------------->
+
+
+    <div class="image-container">
+        <img src="images/backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
+        <div class="box box1">
+            <input type="text" class="search-box" id="city-input" placeholder="Search City">
+            <button onclick="searchCity(); forkastedWeather(); imageDisplayToday()">Search</button><br>
+            <br><button onclick="locator()">Get current location</button>
+        </div>
+
+        
+<!------------------------------------------This is the suggestion boxes of weather locations-------------------------------------------------->
+
+
+        <div class="suggestions-container">
+            <div class="suggestion-box"></div>
+            <div class="suggestion-box"></div>
+            <div class="suggestion-box"></div>
+            <div class="suggestion-box"></div>
+            <div class="suggestion-box"></div>
+            <div class="suggestion-box"></div>
+            <div class="suggestion-box"></div>
+            <div class="suggestion-box"></div>
+        </div>
+    </div>
+
+<!-------------------------------------This is today's weather detailed-------------------------------------------------------------------->
+<div class="transparent-header-weather">
+    <div class="header-name-header">
+        Today's Weather
+    </div>
+    <div class="weather-container">
+        <div class="main-weather" id="main-weather">
+            <div class="weather-box">
+                <div class="location"><div id="header-text"></div></div>
+                <img id="weather-image" src="" alt="Weather Image">
+                <div id="weather_description"></div><br>
+                <div id="temp"></div>
+            </div>
+        </div>
+        <div class="details-container" id="details-container">
+            <div class="weather-item">Sunrise<br><span><div id="sunrise"></div></span></div>
+            <div class="weather-item">Sunset<br><span><div id="sunset"></div></span></div>
+            <div class="weather-item">Wind Speed<br><span><div id="wind_speed"></div></span></div>
+            <div class="weather-item">Max temp<br><span><div id="temp_max"></div></span></div>
+            <div class="weather-item">Min temp<br><span><div id="temp_min"></div></span></div>
+            <div class="weather-item">Feels like<br><span><div id="feels_like"></div></span></div>
+            <div class="weather-item">Humidity<br><span><div id="humidity"></div></span></div>
+        </div>
+    </div>
+</div>
+
+
+<!--------------------------------------------This is the forkast/todays weather------------------------------------------------------------>
+
+<div class="header-transparent-container">
+    <div class="header-box">
+        Forkasted Weather
+    </div>
+</div>
+<div class="transparent-container">
+    <div class="content-container">
+        <div class="tabs">
+            <div class="tab"><div id="day1"></div><br><div id="temp1"></div><br><img id="image1" class="weather-image" alt="Day 1 weather image"><br><div id="description1"></div></div>
+            <div class="tab"><div id="day2"></div><br><div id="temp2"></div><br><img id="image2" class="weather-image" alt="Weather Icon for Day 2"><br><div id="description2"></div></div>
+            <div class="tab"><div id="day3"></div><br><div id="temp3"></div><br><img id="image3" class="weather-image" alt="Weather Icon for Day 3"><br><div id="description3"></div></div>
+            <div class="tab"><div id="day4"></div><br><div id="temp4"></div><br><img id="image4" class="weather-image" alt="Weather Icon for Day 4"><br><div id="description4"></div></div>
+            <div class="tab"><div id="day5"></div><br><div id="temp5"></div><br><img id="image5" class="weather-image" alt="Weather Icon for Day 5"><br><div id="description5"></div></div>
+            <div class="tab"><div id="day6"></div><br><div id="temp6"></div><br><img id="image6" class="weather-image" alt="Weather Icon for Day 6"><br><div id="description6"></div></div>
+            <div class="tab"><div id="day7"></div><br><div id="temp7"></div><br><img id="image7" class="weather-image" alt="Weather Icon for Day 7"><br><div id="description7"></div></div>
+        </div>
+    </div>
+</div>
+    
+    
+
+<!-------------------------------------This is all the HTML to do wit the footer of the web pages------------------------------------------>
+
+<div class="footer">
+    <div class="social-media">
+        <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+        <a href="#"><img src="images/iconEmail.png" alt="Email"></a>
+    </div>
+    <p>World | Europe | Americas | Asia | Africa | Australia | Antarctica</p>
+    <p>2024 ForKast, Inc. All rights reserved.</p>
+    <p>Terms of Use | Privacy Policy | Cookie Policy</p>
+</div> 
+
+
+
+
+</body>
+</html>
