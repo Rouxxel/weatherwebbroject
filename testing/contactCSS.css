@@ -80,6 +80,67 @@ body {
     }
 }
  
+
+/*--------------------------------------------------This is all the CSS for user information box-------------------------------------------------*/
+ 
+#contactForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #7D81D5;
+    font-family: Arial, sans-serif;
+    margin-bottom: 0px; /* Add space below the form */
+ 
+}
+ 
+#contactForm div {
+    margin-bottom: px;
+}
+ 
+#contactForm label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+ 
+#contactForm input[type="text"] {
+    width: calc(100% - 10px); /* Adjust input width */
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+ 
+#contactForm .error {
+    color: red;
+    font-size: 12px;
+}
+ 
+#contactForm button[type="submit"] {
+    background-color: #1f1b42;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+ 
+#contactForm button[type="submit"]:hover {
+    background-color: black;
+}
+ 
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
+    #contactForm input[type="text"] {
+        width: 100%; /* Full width on small screens */
+    }
+}
  
 /*--------------------------------------------------This is all the CSS for the thank you box-------------------------------------------------*/
  
@@ -92,6 +153,7 @@ body {
     max-width: 600px;
     text-align: center;
 }
+
  
 /*--------------------------------------------------This is all the CSS for the footer--------------------------------------------------------*/
  

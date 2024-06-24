@@ -10,8 +10,10 @@
 </head>
 <body>
 
+<!-------------------------------------------Script link------------------------------------------------------------------------------------->
     <script src="mainJS.js"></script>
-
+    
+<!-------------------------------------------Staring functions------------------------------------------------------------------------------->
     <script>defaultWeather()</script>
     <script>forkastedWeather()</script>
     <script>fetchWeatherByCity()</script>
@@ -29,10 +31,10 @@
             <span class="site-title">ForKast</span>
         </div>
         <nav>
-            <a href="main.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+            <a href="#" onclick="redirectTo('main.html')">Home</a>
+            <a href="#" onclick="redirectTo('about.html')">About</a>
+            <a href="#" onclick="redirectTo('contact.html')">Contact</a>
+          </nav>
     </div>
     
 
@@ -42,7 +44,7 @@
     <div class="image-container">
         <img src="images/backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
         <div class="box box1">
-            <input type="text" class="search-box" id="city-input" placeholder="Search City">
+            <input type="text" class="search-box" id="city-input" placeholder="  Search City">
             <button onclick="gettingSearchedCity(); forkastedWeather()">Search</button><br>
             <br><button onclick="locator()">Get current location</button>
         </div>

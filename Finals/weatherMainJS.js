@@ -16,6 +16,19 @@ let day7MainDescription = '';
 //Define global condstions for each day
 let conditionDay1, conditionDay2, conditionDay3, conditionDay4, conditionDay5, conditionDay6, conditionDay7;
 
+//List of whitelisted urls for redirects
+const whitelist = ['weatherWebMain.html', 'weatherWebAbout.html', 'weatherWebContact.html'];
+
+
+//----------------------------------------redirect validation---------------------------------------------------------------------------------------------
+function redirectTo(url) {
+  if (whitelist.includes(url)) {
+    window.location.href = url;
+  } else {
+    console.error('Invalid redirect URL:', url);
+    alert('Invalid URL');
+  }
+}
 
 //----------------------------------------locator---------------------------------------------------------------------------------------------
 

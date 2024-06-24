@@ -10,3 +10,5 @@ forkast for 7 days by city
 
 API = https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/London,UK/next7days?unitGroup=us&key=YOUR_API_KEY
 key = RHK7VYYRZXLYRWCCNR94GGRDW
+
+

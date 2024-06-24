@@ -9,6 +9,10 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
+
+<!-------------------------------------------Script link------------------------------------------------------------------------------------->
+    <script src="contactJS.js"></script>
+
 <!----------------------------------------------This is the nav bar---------------------------------------------------------------------------->
 <div class="header">
     <div class="logo-container">
@@ -18,10 +22,10 @@
         <span class="site-title">ForKast</span>
     </div>
     <nav>
-        <a href="main.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-    </nav>
+        <a href="#" onclick="redirectTo('main.html')">Home</a>
+        <a href="#" onclick="redirectTo('about.html')">About</a>
+        <a href="#" onclick="redirectTo('contact.html')">Contact</a>
+      </nav>
 </div>
 <!-------------------------------------These are team member and info-------------------------------------------------------------------------->
     <div class="container">
@@ -72,13 +76,42 @@
                 </div>
             </div>
         </div>
-<!-------------------------------------This is the tank you box--------------------------------------------------------------------------------->
-        <div class="thank-you-box">
-            <h3>Thank you for visiting our website!</h3>
-            <p>For further inquiries: <a href="mailto:ForKast@gmail.com">ForKast@gmail.com</a></p>
-        </div>
+
+<!-------------------------------------This is where the user fills in the info---------------------------------------------------------------->
+    <div class = "form-box"> 
+        <form id="contactForm">
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="John">
+                <span class="error" id="firstNameError"></span>
+            </div>
+            <br>
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Doe">
+                <span class="error" id="lastNameError"></span>
+            </div>
+            <br>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="emailname@doman.com">
+                <span class="error" id="emailError"></span>
+                <br><button type = "submit" onclick="userSubmit()">Contact</button>
+        </form>
     </div>
+
+    </div>
+
+
+<!-------------------------------------This is the tank you box--------------------------------------------------------------------------------->
+<div class="thank-you-box">
+    <h3>Thank you for visiting our website!</h3>
+    <p>For further inquiries: <a href="mailto:ForKast@gmail.com">ForKast@gmail.com</a></p>
+</div>
+
+
 <!--------------------------------------------------This is the footer------------------------------------------------------------------------->
+
     <div class="footer">
         <div class="social-media">
             <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
