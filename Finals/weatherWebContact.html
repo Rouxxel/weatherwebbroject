@@ -9,10 +9,9 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
-    
-<!-------------------------------------------Script link------------------------------------------------------------------------------------->
-    <script src="weatherwebContactJS.js"></script>
 
+<!-------------------------------------------Script link------------------------------------------------------------------------------------->
+    <script src="weatherWebContactJS.js"></script>
 
 <!----------------------------------------------This is the nav bar---------------------------------------------------------------------------->
 <div class="header">
@@ -77,13 +76,42 @@
                 </div>
             </div>
         </div>
-<!-------------------------------------This is the tank you box--------------------------------------------------------------------------------->
-        <div class="thank-you-box">
-            <h3>Thank you for visiting our website!</h3>
-            <p>For further inquiries: <a href="mailto:ForKast@gmail.com">ForKast@gmail.com</a></p>
-        </div>
+
+<!-------------------------------------This is where the user fills in the info---------------------------------------------------------------->
+    <div class = "form-box"> 
+        <form id="contactForm">
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="John">
+                <span class="error" id="firstNameError"></span>
+            </div>
+            <br>
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Doe">
+                <span class="error" id="lastNameError"></span>
+            </div>
+            <br>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="emailname@doman.com">
+                <span class="error" id="emailError"></span>
+                <br><button type = "submit" onclick="userSubmit()">Contact</button>
+        </form>
     </div>
+
+    </div>
+
+
+<!-------------------------------------This is the tank you box--------------------------------------------------------------------------------->
+<div class="thank-you-box">
+    <h3>Thank you for visiting our website!</h3>
+    <p>For further inquiries: <a href="mailto:ForKast@gmail.com">ForKast@gmail.com</a></p>
+</div>
+
+
 <!--------------------------------------------------This is the footer------------------------------------------------------------------------->
+
     <div class="footer">
         <div class="social-media">
             <a href="#"><img src="images/instagram.png" alt="Instagram"></a>

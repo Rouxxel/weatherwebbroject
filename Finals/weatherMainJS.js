@@ -1,6 +1,13 @@
 //-------------------These are the global variables------------------------------------------------------------------------------------------
 let cityInput = 'Berlin';
 
+//-------------------These are the different API for temp system-----------------------------------------------------------------------------
+let weatherAPI_Open = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`;
+let weatherAPI_Visual = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}/next7days?unitGroup=metric&key=RHK7VYYRZXLYRWCCNR94GGRDW&iconSet=icons2`;
+let metricUnits = false; // toggle for metric units
+let temp_symbol = '°C';
+
+
 // Define global variables to hold the weather data
 let temp, temp_max, temp_min, humidity, wind_speed, sunrise, sunset, weather_main, weather_description, feels_like;
 
@@ -13,12 +20,14 @@ let day5MainDescription = '';
 let day6MainDescription = '';
 let day7MainDescription = '';
 
-//Define global condstions for each day
+// Define global conditions for each day
 let conditionDay1, conditionDay2, conditionDay3, conditionDay4, conditionDay5, conditionDay6, conditionDay7;
 
-//List of whitelisted urls for redirects
+// List of whitelisted URLs for redirects
 const whitelist = ['weatherWebMain.html', 'weatherWebAbout.html', 'weatherWebContact.html'];
 
+
+const cities = ["Berlin", "Tokyo", "New York", "London", "Sydney", "Paris", "Cairo", "Rio de Janeiro", "Moscow", "Dubai", "San Francisco", "Toronto"];
 
 //----------------------------------------redirect validation---------------------------------------------------------------------------------------------
 function redirectTo(url) {
@@ -30,44 +39,67 @@ function redirectTo(url) {
   }
 }
 
+//---------------------------------------Metric switcher-------------------------------------------------------------------------------------
+function merticSwitcher() {
+  metricUnits = !metricUnits; // toggle metric units
+
+  if (metricUnits) {
+    weatherAPI_Open = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`;
+    weatherAPI_Visual = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}/next7days?unitGroup=metric&key=RHK7VYYRZXLYRWCCNR94GGRDW&iconSet=icons2`;
+    getRandomCityWeather_C();
+    temp_symbol = '°C';
+  } else {
+    weatherAPI_Open = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=imperial`;
+    weatherAPI_Visual = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}/next7days?unitGroup=us&key=RHK7VYYRZXLYRWCCNR94GGRDW&iconSet=icons2`;
+    getRandomCityWeather_F();
+    temp_symbol = '°F';
+  }
+
+  fetchWeatherByCity();
+  searchCity();
+  forkastedWeather();
+}
+
 //----------------------------------------locator---------------------------------------------------------------------------------------------
 
 function locator() {
   var request = new XMLHttpRequest();
- 
+
   request.open('GET', 'https://api.ipdata.co/?api-key=6ef951ed663536111bce6535c141078d94cad53fcca9f55e34e22568');
- 
+
   request.setRequestHeader('Accept', 'application/json');
- 
+
   request.onreadystatechange = function () {
     if (this.readyState === 4) {
       var responseData = JSON.parse(this.responseText);
-     
+
       var cityName = responseData.city;
- 
+
       cityInput = cityName;
- 
+
       fetchWeatherByCity();
     }
   };
- 
+
   request.send();
 }
+
 //--------------------------------Part of locator --------------------------------------------------------------------------------------------
 function fetchWeatherByCity() {
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
+  fetch(weatherAPI_Open)
     .then(res => res.json())
     .then(dataSearch => {
- 
-      temp = dataSearch.main.temp;
-      temp_max = dataSearch.main.temp_max;
-      temp_min = dataSearch.main.temp_min;
+
+      temp = Math.round(dataSearch.main.temp);
+      temp_max = Math.round(dataSearch.main.temp_max);
+      temp_min = Math.round(dataSearch.main.temp_min);
       humidity = dataSearch.main.humidity;
       wind_speed = dataSearch.wind.speed;
       sunrise = dataSearch.sys.sunrise;
       sunset = dataSearch.sys.sunset;
-      feels_like = dataSearch.main.feels_like;
- 
+      feels_like = Math.round(dataSearch.main.feels_like);
+      weather_main = dataSearch.weather[0].main;
+
       updateWeatherDisplay();
       forkastedWeather();
     })
@@ -79,14 +111,15 @@ function defaultWeather() {
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
     .then(res => res.json())
     .then(dataDefault => {
-      temp = dataDefault.main.temp;
-      temp_max = dataDefault.main.temp_max;
-      temp_min = dataDefault.main.temp_min;
+      temp = Math.round(dataSearch.main.temp);
+      temp_max = Math.round(dataSearch.main.temp_max);
+      temp_min = Math.round(dataSearch.main.temp_min);
       humidity = dataDefault.main.humidity;
       wind_speed = dataDefault.wind.speed;
       sunrise = dataDefault.sys.sunrise;
       sunset = dataDefault.sys.sunset;
-      feels_like = dataDefault.main.feels_like;
+      feels_like = Math.round(dataDefault.main.feels_like);
+      weather_main = dataDefault.weather[0].main;
 
       updateWeatherDisplay();
       todaysImage();
@@ -94,7 +127,7 @@ function defaultWeather() {
 }
 
 //----------------------------------------Validating search input and updating cityInput-------------------------------------------------------------------------
-function gettingSearchedCity(){
+function gettingSearchedCity() {
   cityInput = document.getElementById('city-input').value.trim();
 
   // Check for special characters
@@ -115,41 +148,43 @@ function gettingSearchedCity(){
 
 //----------------------------------------weather of searched location-------------------------------------------------------------------------
 function searchCity() {
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
+  fetch(weatherAPI_Open)
     .then(res => res.json())
     .then(dataSearch => {
 
-      temp = dataSearch.main.temp;
-      temp_max = dataSearch.main.temp_max;
-      temp_min = dataSearch.main.temp_min;
+      temp = Math.round(dataSearch.main.temp);
+      temp_max = Math.round(dataSearch.main.temp_max);
+      temp_min = Math.round(dataSearch.main.temp_min);
       humidity = dataSearch.main.humidity;
       wind_speed = dataSearch.wind.speed;
       sunrise = dataSearch.sys.sunrise;
       sunset = dataSearch.sys.sunset;
-      feels_like = dataSearch.main.feels_like;
+      feels_like = Math.round(dataSearch.main.feels_like);
+      weather_main = dataSearch.weather[0].main;
 
       updateWeatherDisplay();
     })
     .catch(error => console.error('Error: in searching your city, please try again later'));
-    forkastedWeather();
-    todaysImage();
-    console.log(weather_main)
+
+  forkastedWeather();
+  todaysImage();
 }
 
 function updateWeatherDisplay() {
-  document.getElementById("temp").textContent = `${temp}°C`;
-  document.getElementById("temp_max").textContent = `${temp_max}°C`;
-  document.getElementById("temp_min").textContent = `${temp_min}°C`;
+  document.getElementById("temp").textContent = `${temp} ${temp_symbol}`;
+  document.getElementById("temp_max").textContent = `${temp_max} ${temp_symbol}`;
+  document.getElementById("temp_min").textContent = `${temp_min} ${temp_symbol}`;
   document.getElementById("humidity").textContent = `${humidity}%`;
   document.getElementById("wind_speed").textContent = `${wind_speed} m/s`;
   document.getElementById("sunrise").textContent = `${new Date(sunrise * 1000).toLocaleTimeString()}`;
   document.getElementById("sunset").textContent = `${new Date(sunset * 1000).toLocaleTimeString()}`;
-  document.getElementById("feels_like").textContent = `${feels_like}°C`;
+  document.getElementById("feels_like").textContent = `${feels_like} ${temp_symbol}`;
   document.getElementById("header-text").textContent = cityInput + "'s Weather";
 }
 
 //--------------------------------------image display for todays weather---------------------------------------------------------------------------------------
-function todaysImage(){
+function todaysImage() {
+  let mainImage;
   switch (weather_main) {
     case "Rain":
       mainImage = 'rainicon.png';
@@ -171,50 +206,53 @@ function todaysImage(){
     mainImageElement.src = `images/${mainImage}`; // assuming images are in an "images" folder
   }
 }
+
 //------------------------------get weather for next few days-------------------------------------------------------------------------------------------
-
 function forkastedWeather() {
-  fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}/next7days?unitGroup=metric&key=RHK7VYYRZXLYRWCCNR94GGRDW&iconSet=icons2`)
-  .then(response => response.json())
-  .then(data => {
-          const days = data.days;
-          for (let i = 0; i < days.length; i++) {
-              const dayData = days[i];
-              const date = new Date(dayData.datetimeEpoch * 1000);
-              const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+  fetch(weatherAPI_Visual)
+    .then(response => response.json())
+    .then(data => {
+      const days = data.days;
+      for (let i = 0; i < days.length; i++) {
+        const dayData = days[i];
+        const date = new Date(dayData.datetimeEpoch * 1000);
+        const day = date.toLocaleDateString('en-US', { weekday: 'long' });
 
-              // Save only one condition for each day
-              const condition = dayData.conditions.split(', ')[0];
-              switch (i) {
-                  case 0:
-                      conditionDay1 = condition;
-                      weather_description = dayData.description;
-                      break;
-                  case 1:
-                      conditionDay2 = condition;
-                      break;
-                  case 2:
-                      conditionDay3 = condition;
-                      break;
-                  case 3:
-                      conditionDay4 = condition;
-                      break;
-                  case 4:
-                      conditionDay5 = condition;
-                      break;
-                  case 5:
-                      conditionDay6 = condition;
-                      break;
-                  case 6:
-                      conditionDay7 = condition;
-                      break;
-              }
-              
-              updateForecast(day, dayData.temp, dayData.conditions, dayData.description, i + 1);
-          }
-          dailyImageDisplay(); // Call dailyImageDisplay function after updating forecast
-      })
-  .catch(error => console.error('Error: There was an error in getting your forkasted weather, please try again later'));
+        // Save only one condition for each day
+        const condition = dayData.conditions.split(', ')[0];
+        switch (i) {
+          case 0:
+            conditionDay1 = condition;
+            weather_description = dayData.description;
+            break;
+          case 1:
+            conditionDay2 = condition;
+            break;
+          case 2:
+            conditionDay3 = condition;
+            break;
+          case 3:
+            conditionDay4 = condition;
+            break;
+          case 4:
+            conditionDay5 = condition;
+            break;
+          case 5:
+            conditionDay6 = condition;
+            break;
+          case 6:
+            conditionDay7 = condition;
+            break;
+        }
+
+        // Round the temperature to the nearest whole number
+        const temp = Math.round(dayData.temp);
+
+        updateForecast(day, temp, dayData.conditions, dayData.description, i + 1);
+      }
+      dailyImageDisplay(); // Call dailyImageDisplay function after updating forecast
+    })
+    .catch(error => console.error('Error: There was an error in getting your forecasted weather, please try again later'));
 }
 
 function updateForecast(day, temp, mainDescription, description, dayNumber) {
@@ -223,27 +261,28 @@ function updateForecast(day, temp, mainDescription, description, dayNumber) {
   const descriptionElement = document.getElementById(`description${dayNumber}`);
 
   if (dayElement) {
-      dayElement.textContent = `${day}`;
+    dayElement.textContent = day;
   }
   if (tempElement) {
-      tempElement.textContent = `Temp: ${temp}°C`;
+    tempElement.textContent = `Temp: ${temp} ${temp_symbol}`;
   }
   if (descriptionElement) {
-      descriptionElement.textContent = `${description}`;
+    descriptionElement.textContent = description;
   }
-  
+
   // Add the following lines to update the weather main and description
   const weatherMainElement = document.getElementById('weather-main');
   const weatherDescriptionElement = document.getElementById('weather-description');
-  
+
   if (weatherMainElement) {
-      weatherMainElement.textContent = `${weather_main}`;
+    weatherMainElement.textContent = weather_main;
   }
   if (weatherDescriptionElement) {
-      weatherDescriptionElement.textContent = `${weather_description}`;
+    weatherDescriptionElement.textContent = weather_description;
   }
 }
-//--------------------------------------image display for forkast---------------------------------------------------------------------------------------
+
+//--------------------------------------image display for forecast---------------------------------------------------------------------------------------
 function dailyImageDisplay() {
   const conditions = [conditionDay1, conditionDay2, conditionDay3, conditionDay4, conditionDay5, conditionDay6, conditionDay7];
 
@@ -282,49 +321,68 @@ function dailyImageDisplay() {
   }
 }
 
-
-
-//------------------------------suggested places-------------------------------------------------------------------------------------------
+//------------------------------suggested places in C-------------------------------------------------------------------------------------------
 // Existing variables and functions
- 
-// List of cities to choose from
-const cities = ["Berlin", "Tokyo", "New York", "London", "Sydney", "Paris", "Cairo", "Rio de Janeiro", "Moscow", "Dubai", "San Francisco", "Toronto"];
- 
-// Function to get weather data for 8 random cities
-function getRandomCityWeather() {
+function getRandomCityWeather_C() {
   // Randomly shuffle the array and select the first 8 cities
   const shuffledCities = cities.sort(() => 0.5 - Math.random());
   const selectedCities = shuffledCities.slice(0, 8);
- 
+
   // Clear any existing suggestion box content
   const suggestionBoxes = document.querySelectorAll('.suggestion-box');
   suggestionBoxes.forEach(box => {
     box.innerHTML = "Loading...";
   });
- 
+
   // Fetch weather data for each selected city
   selectedCities.forEach((city, index) => {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
-      .then(res => res.json())
-      .then(data => {
+     .then(res => res.json())
+     .then(data => {
         const weather = data.weather[0].description;
-        const temp = data.main.temp;
+        const temp = Math.round(data.main.temp);
         // Update the suggestion box with weather data
         const suggestionBox = suggestionBoxes[index];
         suggestionBox.innerHTML = `<p>${city}</p><p>${temp}°C</p><p>${weather}</p>`;
       })
-      .catch(error => {
+     .catch(error => {
         console.error('Error:', error);
         const suggestionBox = suggestionBoxes[index];
         suggestionBox.innerHTML = `<p>Error loading data</p>`;
       });
   });
 }
- 
+
+//---------------------------------------------------suggested in F---------------------------------------------------------------------------
+function getRandomCityWeather_F() {
+  // Randomly shuffle the array and select the first 8 cities
+  const shuffledCities = cities.sort(() => 0.5 - Math.random());
+  const selectedCities = shuffledCities.slice(0, 8);
+
+  // Clear any existing suggestion box content
+  const suggestionBoxes = document.querySelectorAll('.suggestion-box');
+  suggestionBoxes.forEach(box => {
+    box.innerHTML = "Loading...";
+  });
+
+  // Fetch weather data for each selected city
+  selectedCities.forEach((city, index) => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=96f97ce98eae5f28d54c627c89497f55&units=imperial`)
+     .then(res => res.json())
+     .then(data => {
+        const weather = data.weather[0].description;
+        const temp = Math.round(data.main.temp);
+        // Update the suggestion box with weather data
+        const suggestionBox = suggestionBoxes[index];
+        suggestionBox.innerHTML = `<p>${city}</p><p>${temp}°F</p><p>${weather}</p>`;
+      })
+     .catch(error => {
+        console.error('Error:', error);
+        const suggestionBox = suggestionBoxes[index];
+        suggestionBox.innerHTML = `<p>Error loading data</p>`;
+      });
+  });
+}
+
 // Call the function to load random city weather on page load
-document.addEventListener("DOMContentLoaded", getRandomCityWeather);
-
-//--------------------------------------image display---------------------------------------------------------------------------------------
-
-
-
+document.addEventListener("DOMContentLoaded", getRandomCityWeather_C);

@@ -9,13 +9,14 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body>
+
 <!-------------------------------------------Script link------------------------------------------------------------------------------------->
     <script src="weatherMainJS.js"></script>
-
+    
 <!-------------------------------------------Staring functions------------------------------------------------------------------------------->
     <script>defaultWeather()</script>
-    <script>forkastedWeather()</script>
-    <script>fetchWeatherByCity()</script>
+    <script>merticSwitcher()</script>
+  
     
     
 
@@ -30,6 +31,12 @@
             <span class="site-title">ForKast</span>
         </div>
         <nav>
+            <label class="switch">
+                <input type="checkbox" onchange="merticSwitcher()">
+                <span class="slider"></span>
+                <span class="label-c">C</span>
+                <span class="label-f">F</span>
+            </label>
             <a href="#" onclick="redirectTo('weatherWebMain.html')">Home</a>
             <a href="#" onclick="redirectTo('weatherWebAbout.html')">About</a>
             <a href="#" onclick="redirectTo('weatherWebContact.html')">Contact</a>
@@ -43,7 +50,7 @@
     <div class="image-container">
         <img src="images/backgroundImage.jpg" alt="Adjustable" class="adjustable-size">
         <div class="box box1">
-            <input type="text" class="search-box" id="city-input" placeholder="Search City">
+            <input type="text" class="search-box" id="city-input" placeholder="  Search City">
             <button onclick="gettingSearchedCity(); forkastedWeather()">Search</button><br>
             <br><button onclick="locator()">Get current location</button>
         </div>
