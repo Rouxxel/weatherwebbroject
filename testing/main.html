@@ -15,8 +15,8 @@
     
 <!-------------------------------------------Staring functions------------------------------------------------------------------------------->
     <script>defaultWeather()</script>
-    <script>forkastedWeather()</script>
-    <script>fetchWeatherByCity()</script>
+    <script>merticSwitcher()</script>
+  
     
     
 
@@ -31,6 +31,12 @@
             <span class="site-title">ForKast</span>
         </div>
         <nav>
+            <label class="switch">
+                <input type="checkbox" onchange="merticSwitcher()">
+                <span class="slider"></span>
+                <span class="label-c">C</span>
+                <span class="label-f">F</span>
+            </label>
             <a href="#" onclick="redirectTo('main.html')">Home</a>
             <a href="#" onclick="redirectTo('about.html')">About</a>
             <a href="#" onclick="redirectTo('contact.html')">Contact</a>
