@@ -174,3 +174,7 @@ body {
 .footer img {
     height: 30px;
 }
+/* Specific rule for the email icon */
+.footer img[alt="Email"] {
+    height: 40px; /* Change this value to your desired size */
+}
