@@ -120,10 +120,9 @@ function defaultWeather() {
       sunset = dataDefault.sys.sunset;
       feels_like = Math.round(dataDefault.main.feels_like);
       weather_main = dataDefault.weather[0].main;
-
-      updateWeatherDisplay();
-      todaysImage();
     });
+    updateWeatherDisplay();
+    todaysImage();
 }
 
 //----------------------------------------Validating search input and updating cityInput-------------------------------------------------------------------------
