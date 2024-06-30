@@ -97,7 +97,7 @@ input:checked + .slider {
 }
  
 input:checked + .slider:before {
-    transform: translateX(26px); /* Adjusted translateX to match the button size */
+    transform: translateX(53px); /* Adjusted translateX to match the button size */
 }
  
 input:checked + .slider .label-c {
@@ -152,22 +152,53 @@ input:not(:checked) + .slider .label-f {
     border: 1px solid #00082B;
     background-color: rgba(255, 255, 255, 0.9);
     color: #00082B;
+    transition: width 0.3s ease-in-out; /* Smooth transition for width change */
+}
+
+/* Responsive adjustments for search box */
+@media (max-width: 1200px) {
+    .box1 .search-box {
+        width: 600px; /* Adjust width for medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .box1 .search-box {
+        width: 500px; /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .box1 .search-box {
+        width: 400px; /* Adjust width for tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .box1 .search-box {
+        width: 300px; /* Adjust width for small devices */
+    }
+}
+
+@media (max-width: 400px) {
+    .box1 .search-box {
+        width: 100%; /* Full width for very small screens */
+    }
 }
 
 button {
-    background-color: #1f1b42; /* Green */
+    background-color: #1f1b42; /* Blue */
     color: white;
     padding: 5px 8px; /* increased padding to make the button larger */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px; /* increased font size to make the button larger */
-  }
-  
-  button:hover {
-    background-color: #070707;
-  }
+}
 
+button:hover {
+    background-color: #070707;
+}
 
 /*-------------------------------------------This is the CSS for the suggestion boxes---------------------------------------------------------*/
 
@@ -413,6 +444,7 @@ button {
     margin-bottom: 50px;
     margin-top: 250px;
 }
+
 .footer a {
     color: black;
     margin: 0 15px;
@@ -421,8 +453,8 @@ button {
 
 .footer img {
     height: 30px;
-
 }
+
 /* Specific rule for the email icon */
 .footer img[alt="Email"] {
     height: 40px; /* Change this value to your desired size */

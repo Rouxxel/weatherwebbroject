@@ -187,7 +187,7 @@ input:not(:checked) + .slider .label-f {
 }
 
 button {
-    background-color: #1f1b42; /* Green */
+    background-color: #1f1b42; /* Blue */
     color: white;
     padding: 5px 8px; /* increased padding to make the button larger */
     border: none;

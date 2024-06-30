@@ -2,11 +2,10 @@
 let cityInput = 'Berlin';
 
 //-------------------These are the different API for temp system-----------------------------------------------------------------------------
-let weatherAPI_Open = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`;
-let weatherAPI_Visual = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}/next7days?unitGroup=metric&key=RHK7VYYRZXLYRWCCNR94GGRDW&iconSet=icons2`;
-let metricUnits = false; // toggle for metric units
-let temp_symbol = '°C';
-
+let weatherAPI_Open = ``;
+let weatherAPI_Visual = ``;
+let metricUnits = 0; // toggle for metric units
+let temp_symbol = '';
 
 // Define global variables to hold the weather data
 let temp, temp_max, temp_min, humidity, wind_speed, sunrise, sunset, weather_main, weather_description, feels_like;
@@ -26,7 +25,6 @@ let conditionDay1, conditionDay2, conditionDay3, conditionDay4, conditionDay5, c
 // List of whitelisted URLs for redirects
 const whitelist = ['main.html', 'about.html', 'contact.html'];
 
-
 const cities = ["Berlin", "Tokyo", "New York", "London", "Sydney", "Paris", "Cairo", "Rio de Janeiro", "Moscow", "Dubai", "San Francisco", "Toronto"];
 
 //----------------------------------------redirect validation---------------------------------------------------------------------------------------------
@@ -40,25 +38,29 @@ function redirectTo(url) {
 }
 
 //---------------------------------------Metric switcher-------------------------------------------------------------------------------------
-function merticSwitcher() {
-  metricUnits = !metricUnits; // toggle metric units
+function metricSwitcher() {
+  metricUnits = metricUnits === 0 ? 1 : 0;
+  updateWeatherAPIs();  // Update weather APIs immediately after toggling units
+  fetchWeatherByCity();
+  forkastedWeather();
+}
 
-  if (metricUnits) {
+
+//----------------------------------------Update weather APIs based on metric units-------------------------------------------------------------------------------------
+function updateWeatherAPIs() {
+  if (metricUnits === 0) {
     weatherAPI_Open = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`;
     weatherAPI_Visual = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}/next7days?unitGroup=metric&key=RHK7VYYRZXLYRWCCNR94GGRDW&iconSet=icons2`;
-    getRandomCityWeather_C();
     temp_symbol = '°C';
+    
   } else {
     weatherAPI_Open = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=96f97ce98eae5f28d54c627c89497f55&units=imperial`;
     weatherAPI_Visual = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityInput}/next7days?unitGroup=us&key=RHK7VYYRZXLYRWCCNR94GGRDW&iconSet=icons2`;
-    getRandomCityWeather_F();
     temp_symbol = '°F';
+    getRandomCityWeather_F()
   }
-
-  fetchWeatherByCity();
-  searchCity();
-  forkastedWeather();
 }
+
 
 //----------------------------------------locator---------------------------------------------------------------------------------------------
 
@@ -66,18 +68,17 @@ function locator() {
   var request = new XMLHttpRequest();
 
   request.open('GET', 'https://api.ipdata.co/?api-key=6ef951ed663536111bce6535c141078d94cad53fcca9f55e34e22568');
-
   request.setRequestHeader('Accept', 'application/json');
 
   request.onreadystatechange = function () {
     if (this.readyState === 4) {
       var responseData = JSON.parse(this.responseText);
-
       var cityName = responseData.city;
 
       cityInput = cityName;
-
+      updateWeatherAPIs();
       fetchWeatherByCity();
+      forkastedWeather();
     }
   };
 
@@ -89,7 +90,6 @@ function fetchWeatherByCity() {
   fetch(weatherAPI_Open)
     .then(res => res.json())
     .then(dataSearch => {
-
       temp = Math.round(dataSearch.main.temp);
       temp_max = Math.round(dataSearch.main.temp_max);
       temp_min = Math.round(dataSearch.main.temp_min);
@@ -102,27 +102,9 @@ function fetchWeatherByCity() {
 
       updateWeatherDisplay();
       forkastedWeather();
+      todaysImage();
     })
     .catch(error => console.error('Error:There was an error in locating you, please try again later'));
-}
-
-//------------------------------weather Default---------------------------------------------------------------------------------------------
-function defaultWeather() {
-  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=96f97ce98eae5f28d54c627c89497f55&units=metric`)
-    .then(res => res.json())
-    .then(dataDefault => {
-      temp = Math.round(dataSearch.main.temp);
-      temp_max = Math.round(dataSearch.main.temp_max);
-      temp_min = Math.round(dataSearch.main.temp_min);
-      humidity = dataDefault.main.humidity;
-      wind_speed = dataDefault.wind.speed;
-      sunrise = dataDefault.sys.sunrise;
-      sunset = dataDefault.sys.sunset;
-      feels_like = Math.round(dataDefault.main.feels_like);
-      weather_main = dataDefault.weather[0].main;
-    });
-    updateWeatherDisplay();
-    todaysImage();
 }
 
 //----------------------------------------Validating search input and updating cityInput-------------------------------------------------------------------------
@@ -147,10 +129,11 @@ function gettingSearchedCity() {
 
 //----------------------------------------weather of searched location-------------------------------------------------------------------------
 function searchCity() {
+  updateWeatherAPIs();
+
   fetch(weatherAPI_Open)
     .then(res => res.json())
     .then(dataSearch => {
-
       temp = Math.round(dataSearch.main.temp);
       temp_max = Math.round(dataSearch.main.temp_max);
       temp_min = Math.round(dataSearch.main.temp_min);
@@ -179,7 +162,11 @@ function updateWeatherDisplay() {
   document.getElementById("sunset").textContent = `${new Date(sunset * 1000).toLocaleTimeString()}`;
   document.getElementById("feels_like").textContent = `${feels_like} ${temp_symbol}`;
   document.getElementById("header-text").textContent = cityInput + "'s Weather";
+
+  // Displaying temp2
+  document.getElementById("temp-1").textContent = `${temp} ${temp_symbol}`;
 }
+
 
 //--------------------------------------image display for todays weather---------------------------------------------------------------------------------------
 function todaysImage() {
@@ -321,14 +308,15 @@ function dailyImageDisplay() {
 }
 
 //------------------------------suggested places in C-------------------------------------------------------------------------------------------
-// Existing variables and functions
 function getRandomCityWeather_C() {
   // Randomly shuffle the array and select the first 8 cities
   const shuffledCities = cities.sort(() => 0.5 - Math.random());
-  const selectedCities = shuffledCities.slice(0, 8);
+  const suggestionBoxes = document.querySelectorAll('.suggestion-box');
+
+  // Ensure selected cities do not exceed the number of suggestion boxes
+  const selectedCities = shuffledCities.slice(0, suggestionBoxes.length);
 
   // Clear any existing suggestion box content
-  const suggestionBoxes = document.querySelectorAll('.suggestion-box');
   suggestionBoxes.forEach(box => {
     box.innerHTML = "Loading...";
   });
@@ -356,10 +344,12 @@ function getRandomCityWeather_C() {
 function getRandomCityWeather_F() {
   // Randomly shuffle the array and select the first 8 cities
   const shuffledCities = cities.sort(() => 0.5 - Math.random());
-  const selectedCities = shuffledCities.slice(0, 8);
+  const suggestionBoxes = document.querySelectorAll('.suggestion-box');
+
+  // Ensure selected cities do not exceed the number of suggestion boxes
+  const selectedCities = shuffledCities.slice(0, suggestionBoxes.length);
 
   // Clear any existing suggestion box content
-  const suggestionBoxes = document.querySelectorAll('.suggestion-box');
   suggestionBoxes.forEach(box => {
     box.innerHTML = "Loading...";
   });
