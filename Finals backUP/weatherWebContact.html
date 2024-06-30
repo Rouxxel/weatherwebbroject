@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Weather forecast, Local weather, Current weather,
+            Temperature, Humidity, Precipitation, Wind, Climate, Weather conditions, Weather data">
+        
+        <meta name="author" content="Sebastian Russo">
+        <meta name="author" content="Serhat Özağı">
+        <meta name="author" content="Guillermo Trigo">
+        <meta name="author" content="Javier Peres">
+        <meta name="author" content="Lex Rencken">
+        <meta name="author" content="Emmanuel Nnyamah">
+
+        <meta name="charset" content="UTF-8">
+
+        <!-- Property Tags -->
+        <meta property="og:title" content="Forkast">
+        <meta property="og:description" content="Weather web">
+        <meta name="copyright" content="University of Europe for Applied Sciences, 
+            all rights reserved (none)">
+        <meta name="copyright" content="University of Europe for Applied Sciences, 
+            all rights reserved (none)">
+
+    <title>ForKast</title>
+    <link rel="stylesheet" href="weatherWebContactCSS.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Enabling bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-------------------------------------------Script link------------------------------------------------------------------------------------->
+    <script src="weatherWebContactJS.js"></script>
+
+<!----------------------------------------------This is the nav bar---------------------------------------------------------------------------->
+<div class="header">
+    <div class="logo-container">
+        <a href="weatherWebMain.html">
+            <img src="images/ForKastLogo.png" alt="ForKast">
+        </a>
+        <span class="site-title">ForKast</span>
+    </div>
+    <nav>
+        <a href="#" onclick="redirectTo('weatherWebMain.html')">Home</a>
+        <a href="#" onclick="redirectTo('weatherWebAbout.html')">About</a>
+        <a href="#" onclick="redirectTo('weatherWebContact.html')">Contact</a>
+      </nav>
+</div>
+<!-------------------------------------These are team member and info-------------------------------------------------------------------------->
+    <div class="container">
+        <div class="team-contacts-container">
+            <h2 class="team-contacts-title">Team Contacts</h2>
+            <div class="team-contacts">
+                <div class="team-member">
+                    <img src="images/ContactImagesW.png" alt="Sebastian Russo">
+                    <p>Sebastian Russo<br>
+                    <span>randomID6969</span><br>
+                    <span>+49 3848 8379</span><br>
+                    <a href="mailto:ThisisRandom@gmail.com">ThisisRandom@gmail.com</a></p>
+                </div>
+                <div class="team-member">
+                    <img src="images/ContactImages.png" alt="Emmanuel Nnyamah">
+                    <p>Emmanuel Nnyamah<br>
+                    <span>randomID6969</span><br>
+                    <span>+49 3848 8379</span><br>
+                    <a href="mailto:ThisisRandom@gmail.com">ThisisRandom@gmail.com</a></p>
+                </div>
+                <div class="team-member">
+                    <img src="images/ContactImagesW.png" alt="Javier Peres">
+                    <p>Javier Peres<br>
+                    <span>randomID6969</span><br>
+                    <span>+49 3848 8379</span><br>
+                    <a href="mailto:ThisisRandom@gmail.com">ThisisRandom@gmail.com</a></p>
+                </div>
+                <div class="team-member">
+                    <img src="images/ContactImagesW.png" alt="Serhat Sefer Ozagi">
+                    <p>Sefer Serhat Ozagi<br>
+                    <span>randomID6969</span><br>
+                    <span>+49 3848 8379</span><br>
+                    <a href="mailto:ThisisRandom@gmail.com">ThisisRandom@gmail.com</a></p>
+                </div>
+                <div class="team-member">
+                    <img src="images/ContactImagesW.png" alt="Guillermo Trigo">
+                    <p>Guillermo Trigo<br>
+                    <span>randomID6969</span><br>
+                    <span>+49 3848 8379</span><br>
+                    <a href="mailto:ThisisRandom@gmail.com">ThisisRandom@gmail.com</a></p>
+                </div>
+                <div class="team-member">
+                    <img src="images/ContactImagesW.png" alt="Lex Rencken">
+                    <p>Lex Rencken<br>
+                    <span>randomID6969</span><br>
+                    <span>+49 3848 8379</span><br>
+                    <a href="mailto:ThisisRandom@gmail.com">ThisisRandom@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-------------------------------------This is where the user fills in the info---------------------------------------------------------------->
+    <div class = "form-box"> 
+        <form id="contactForm">
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="John">
+                <span class="error" id="firstNameError"></span>
+            </div>
+            <br>
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Doe">
+                <span class="error" id="lastNameError"></span>
+            </div>
+            <br>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="emailname@doman.com">
+                <span class="error" id="emailError"></span>
+                <br><button type = "submit" onclick="userSubmit()">Contact</button>
+        </form>
+    </div>
+
+    </div>
+
+
+<!-------------------------------------This is the tank you box--------------------------------------------------------------------------------->
+<div class="thank-you-box">
+    <h3>Thank you for visiting our website!</h3>
+    <p>For further inquiries: <a href="mailto:ForKast@gmail.com">ForKast@gmail.com</a></p>
+</div>
+
+
+<!--------------------------------------------------This is the footer------------------------------------------------------------------------->
+
+<div class="footer">
+    <div class="social-media">
+        <a href="#" onclick="redirectTo('weatherWebContact.html')"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="#" onclick="redirectTo('weatherWebContact.html')"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+        <a href="#" onclick="redirectTo('weatherWebContact.html')"><img src="images/iconEmail.png" alt="Email"></a>
+    </div>
+    <p>World | Europe | Americas | Asia | Africa | Australia | Antarctica</p>
+    <p>2024 ForKast, Inc. All rights reserved.</p>
+    <p>Terms of Use | Privacy Policy | Cookie Policy</p>
+</div>
+
+</body>
+</html>

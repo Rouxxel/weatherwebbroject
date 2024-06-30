@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Weather forecast, Local weather, Current weather,
+            Temperature, Humidity, Precipitation, Wind, Climate, Weather conditions, Weather data">
+        
+        <meta name="author" content="Sebastian Russo">
+        <meta name="author" content="Serhat Özağı">
+        <meta name="author" content="Guillermo Trigo">
+        <meta name="author" content="Javier Peres">
+        <meta name="author" content="Lex Rencken">
+        <meta name="author" content="Emmanuel Nnyamah">
+
+        <meta name="charset" content="UTF-8">
+
+        <!-- Property Tags -->
+        <meta property="og:title" content="Forkast">
+        <meta property="og:description" content="Weather web">
+        <meta name="copyright" content="University of Europe for Applied Sciences, 
+            all rights reserved (none)">
+
+    <title>ForKast</title>
+    <link rel="stylesheet" href="weatherWebAboutCSS.css"> <!-- Link to the external CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Enabling bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-------------------------------------------Script link------------------------------------------------------------------------------------->
+    <script src="weatherwebAboutJS.js"></script>
+
+
+    <!--------------------------------------------This is the nav bar--------------------------------------------------------------------------->
+    <div class="header">
+        <div class="logo-container">
+            <a href="weatherWebMain.html">
+                <img src="images/ForKastLogo.png" alt="ForKast">
+            </a>
+            <span class="site-title">ForKast</span>
+        </div>
+        <nav>
+            <a href="#" onclick="redirectTo('weatherWebMain.html')">Home</a>
+            <a href="#" onclick="redirectTo('weatherWebAbout.html')">About</a>
+            <a href="#" onclick="redirectTo('weatherWebContact.html')">Contact</a>
+          </nav>
+    </div>
+
+    <!-------------------------------------This is a box above the about us--------------------------------------------------------------------->
+    <div class="box top-box">
+        <h1 class="forkast-text">ForKast</h1>
+    </div>
+    <!----------------------------------------------This is the about us box-------------------------------------------------------------------->
+    <div class="box">
+        <div class="box-content">
+            <h1>About Us</h1>
+            <p>Welcome to Forkast, your new go-to weather app designed to make weather forecasting easier and faster to access for everyone.</p>
+            <h2>Our Story</h2>
+            <p>Forkast started as a collaborative group project that brought our team together with a shared passion for innovation and technology. Inspired by our project's success and the positive feedback we received, we decided to take it further and create an app that stands out in the crowded weather forecasting space.</p>
+            <h2>Our Mission and Vision</h2>
+            <p>Our mission is simple: to make weather forecasting easy and accessible for everyone, from young children to the elderly. We envision a world where accurate weather information is at everyone's fingertips, helping people plan their days and stay safe, regardless of where they are.</p>
+            <h2>Features</h2>
+            <p>Forkast offers all the essential features you expect from a top-tier weather app, but with a cooler, more intuitive UI design and interface that enhances user experience. We believe that getting the weather forecast should be as pleasant as it is practical.</p>
+            <h2>Technology</h2>
+            <p>We leverage advanced APIs to provide accurate and up-to-date weather forecasts. Our use of cutting-edge technology ensures that our users get the most reliable information quickly and efficiently.</p>
+            <h2>Our Team</h2>
+            <p>Forkast is brought to you by a diverse and dedicated team of innovators:</p>
+            <ul>
+                <li>Sebastian Russo</li>
+                <li>Javier Peres</li>
+                <li>Guillermo Trigo</li>
+                <li>Lex Rencken</li>
+                <li>Sefer Serhat Ozagi</li>
+                <li>Emmanuel Nnyamah</li>
+            </ul>
+            <h2>Target Audience</h2>
+            <p>Forkast is designed for everyone, from the age of 5 to 90. Whether you're planning a family outing, preparing for a commute, or just curious about the weather, Forkast provides the information you need in a format you'll love.</p>
+            <p>Join us on our journey to make weather forecasting accessible, reliable, and enjoyable for everyone. Welcome to Forkast, where the weather is always at your fingertips.</p>
+        </div>
+    </div>
+<!----------------------------------------------------This is the footer------------------------------------------------------------------------>
+<div class="footer">
+    <div class="social-media">
+        <a href="#" onclick="redirectTo('weatherWebContact.html')"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="#" onclick="redirectTo('weatherWebContact.html')"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+        <a href="#" onclick="redirectTo('weatherWebContact.html')"><img src="images/iconEmail.png" alt="Email"></a>
+    </div>
+    <p>World | Europe | Americas | Asia | Africa | Australia | Antarctica</p>
+    <p>2024 ForKast, Inc. All rights reserved.</p>
+    <p>Terms of Use | Privacy Policy | Cookie Policy</p>
+</div>
+
+    
+</body>
+</html>
