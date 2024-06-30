@@ -12,7 +12,7 @@ body {
 /*-------------------------------------------This is the CSS to do with navigation bar--------------------------------------------------------*/
 .header {
     background-color: #00082B;
-    padding: 10px 20px;
+    padding: 10px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -172,6 +172,7 @@ body {
     margin-top: 50px;
     margin-bottom: 50px;
     height: 18 0px;
+    margin-left: -20px;
 }
 .footer a {
     color: black;
