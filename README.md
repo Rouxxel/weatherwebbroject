@@ -1,4 +1,7 @@
 # weatherwepbroject
+
+!!!IMPORTANT!!! As of right now the website won't work because the API keys were disabled before making this repository public
+
 This is a web app project with a team of 6 people in UE university that is the web version of an app from the same project
 
 This is the final project for our Front-end
